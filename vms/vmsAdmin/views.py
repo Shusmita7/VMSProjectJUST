@@ -14,8 +14,8 @@ def schedule(request):
     return HttpResponse("This is schedule page")
 
 
-def viewUser(request):
-    return HttpResponse("This is View User list page")
+def vmsUser(request):
+    return HttpResponse("This is User Page")
 
 
 def userCost(request):

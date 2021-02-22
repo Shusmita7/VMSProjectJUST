@@ -7,7 +7,7 @@ from .forms import CreateUserForm
 
 
 def home(request):
-    return HttpResponse("Hello, world. You're at the homepage of JUST VMS website")
+    return render(request, 'core/navbar.html')
 
 
 # @login_required(login_url='login')
