@@ -1,58 +1,53 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
-# from django.contrib.auth.decorators import login_required
-from .forms import CreateUserForm
 
 
 def home(request):
-    return render(request, 'core/navbar.html')
+    return render(request, 'core/index.html')
 
 
-# @login_required(login_url='login')
 def notice(request):
-    return HttpResponse("This is notice page")
+    return render(request, 'core/notice.html')
 
 
-def loginPage(request):
-    if request.user.is_authenticated:
-        return redirect('home')
+def loginUser(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            messages.success(request, "You have been logged in")
+            return redirect('home')
+        else:
+            messages.error(request, "Error logging in - please try again")
+            return redirect('login')
     else:
-        if request.method == 'POST':
-            username = request.POST.get('username')
-            password = request.POST.get('password')
-
-            user = authenticate(request, username=username, password=password)
-
-            if user is not None:
-                login(request, user)
-                return redirect('home')
-            else:
-                messages.info(request, 'Username OR password is incorrect')
-
-        context = {}
-        return render(request, 'core/login.html', context)
+        return render(request, 'core/login.html')
 
 
-def registerPage(request):
-    if request.user.is_authenticated:
-        return redirect('home')
+def registerUser(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password1']
+            user = authenticate(username=username, password=password)
+            login(request, user)
+            messages.success(request, "You have successfully registered....")
+            return redirect('home')
     else:
-        form = CreateUserForm()
-        if request.method == 'POST':
-            form = CreateUserForm(request.POST)
-            if form.is_valid():
-                form.save()
-                user = form.cleaned_data.get('username')
-                messages.success(request, 'Account was created for ' + user)
+        form = UserCreationForm()
 
-                return redirect('login')
-
-        context = {'form': form}
-        return render(request, 'core/register.html', context)
+    context = {'form': form}
+    return render(request, 'core/register.html', context)
 
 
 def logoutUser(request):
     logout(request)
-    return redirect('login')
+    messages.success(request, "You have been logged out")
+    return redirect('home')
