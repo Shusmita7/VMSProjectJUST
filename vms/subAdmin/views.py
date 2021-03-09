@@ -3,7 +3,7 @@ from django.http import HttpResponse
 
 
 def home(request):
-    return HttpResponse("Hello, world. You're at the homepage of user.")
+    return HttpResponse("Hello, world. You're at the homepage of sub-admin.")
 
 
 def notice(request):

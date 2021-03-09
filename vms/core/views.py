@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
+from .forms import SignUpForms
 
 
 def home(request):
@@ -31,7 +32,7 @@ def loginUser(request):
 
 def registerUser(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = SignUpForms(request.POST)
         if form.is_valid():
             form.save()
             username = form.cleaned_data['username']
@@ -41,7 +42,7 @@ def registerUser(request):
             messages.success(request, "You have successfully registered....")
             return redirect('home')
     else:
-        form = UserCreationForm()
+        form = SignUpForms()
 
     context = {'form': form}
     return render(request, 'core/register.html', context)
