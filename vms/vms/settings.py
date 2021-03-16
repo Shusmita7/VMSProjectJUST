@@ -31,11 +31,11 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'core.apps.CoreConfig',
-    'subAdmin.apps.SubAdminConfig',
-    'vmsAdmin.apps.VmsAdminConfig',
-    'user.apps.UserConfig',
-    'accountant.apps.AccountantConfig',
+    'core',
+    'subAdmin',
+    'vmsAdmin',
+    'user',
+    'accountant',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+
+AUTH_USER_MODEL = 'core.NewUser'  # changing the default user app to custom
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

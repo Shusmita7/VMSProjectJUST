@@ -1,54 +1,49 @@
+# from django.http import request
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
 from django.contrib.auth import login, logout, authenticate
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
-from .forms import SignUpForms
+from .forms import CustomUserCreationForm, LoginForm
+from django.views.generic import CreateView, FormView
+
+from .models import NewUser
 
 
-def home(request):
+def homePage(request):
     return render(request, 'core/index.html')
 
 
-def notice(request):
+def noticePage(request):
     return render(request, 'core/notice.html')
 
 
-def loginUser(request):
-    if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
-        user = authenticate(request, username=username, password=password)
+class SignUpView(CreateView):
+    model = NewUser
+    form_class = CustomUserCreationForm
+    success_url = '/'
+    template_name = 'core/register.html'
+
+
+class LoginView(FormView):
+    form_class = LoginForm
+    success_url = '/'
+
+    def form_valid(self, form):
+        request = self.request
+        email = form.cleaned_data.get('email')
+        password = form.cleaned_data.get('password')
+        user = authenticate(request, email=email, password=password)
         if user is not None:
             login(request, user)
             messages.success(request, "You have been logged in")
-            return redirect('home')
+            return redirect('homePage')
         else:
             messages.error(request, "Error logging in - please try again")
             return redirect('login')
-    else:
-        return render(request, 'core/login.html')
 
-
-def registerUser(request):
-    if request.method == 'POST':
-        form = SignUpForms(request.POST)
-        if form.is_valid():
-            form.save()
-            username = form.cleaned_data['username']
-            password = form.cleaned_data['password1']
-            user = authenticate(username=username, password=password)
-            login(request, user)
-            messages.success(request, "You have successfully registered....")
-            return redirect('home')
-    else:
-        form = SignUpForms()
-
-    context = {'form': form}
-    return render(request, 'core/register.html', context)
+    template_name = 'core/login.html'
 
 
 def logoutUser(request):
     logout(request)
     messages.success(request, "You have been logged out")
-    return redirect('home')
+    return redirect('homePage')
