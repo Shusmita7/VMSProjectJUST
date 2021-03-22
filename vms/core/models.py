@@ -68,6 +68,14 @@ class NewUserManager(BaseUserManager):
         return user
 
 
+# def get_profile_image_filepath(self):
+#     return f'profile_images/{self.pk}/{"profile_image.png"}'
+#
+#
+# def get_default_profile_image():
+#     return "core/images/defaultuser.png"
+
+
 class NewUser(AbstractBaseUser):
     username = models.CharField(verbose_name='Username', max_length=100, blank=True, null=True, unique=True)
     email = models.EmailField(verbose_name='Email Address', max_length=100, unique=True, )
@@ -75,6 +83,10 @@ class NewUser(AbstractBaseUser):
     dept_sec = models.CharField(verbose_name='Department or Section', max_length=100, blank=True, null=True)
     designation = models.CharField(verbose_name='Designation', max_length=100, blank=True, null=True)
     contact_no = models.CharField(verbose_name='Contact Number', max_length=11, blank=True, null=True, unique=True)
+    date_joined = models.DateTimeField(verbose_name='Date Joined..', auto_now_add=True)
+    last_login = models.DateTimeField(verbose_name='Last Logged in', auto_now=True)
+    profile_image = models.ImageField(max_length=255, null=True, blank=True, default='defaultuser.png',
+                                      upload_to='core/images/')
     active = models.BooleanField(default=True)
     staff = models.BooleanField(default=False)
     admin = models.BooleanField(default=False)
@@ -101,6 +113,9 @@ class NewUser(AbstractBaseUser):
 
     def __str__(self):
         return self.email
+
+    # def get_profile_image_filename(self):
+    #     return str(self.profile_image)[str(self.profile_image).index(f'profile_images/{self.pk}/'):]
 
     def has_perm(self, perm, obj=None):
         """Does the user have a specific permission?"""
