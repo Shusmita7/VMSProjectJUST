@@ -1,14 +1,14 @@
 <!---->
 {% load static %}
 
-<link rel="stylesheet" href="{% static 'core/css/navbar.css' %}">
+<link rel="stylesheet" href="{% static '.../static/accounts/css/navbar.css' %}">
 
 <!--{% block navbar %}-->
 <div class="header">
 
   <nav class="navbar navbar-expand-lg navbar-light">
     <a class="navbar-brand" href="#">
-      <img src="{% static 'core/images/justlogo.png' %}" class="logo d-inline-block align-top" alt="">
+      <img src="{% static '.../static/accounts/images/justlogo.png' %}" class="logo d-inline-block align-top" alt="">
       <span class="textlogo"> <span class="textlogofirst">JUST</span> <br> <span class="textlogosecond">Vehicle Management System</span></span>
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,7 +27,7 @@
 
         {% if user.is_authenticated %}
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'homePage' %}"><span class="navicon">{{ request.user.username }}</span></a>
+          <a class="nav-link" href="{% url 'user_home' %}"><span class="navicon">{{ request.user.username }}</span></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{% url 'logout' %}"><span class="navicon">Logout</span></a>

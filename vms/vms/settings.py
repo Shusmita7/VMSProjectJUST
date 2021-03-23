@@ -31,10 +31,10 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'core',
+    'accounts',
     'subAdmin',
     'vmsAdmin',
-    'user',
+    'vmsUser',
     'accountant',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ]
 
-AUTH_USER_MODEL = 'core.NewUser'  # changing the default user app to custom
+AUTH_USER_MODEL = 'accounts.NewUser'  # changing the default user app to custom
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -129,11 +129,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-MEDIA_URL = '/images/'
+MEDIA_URL = '/media/'
 STATICFILES_DIR = [
     os.path.join(BASE_DIR, 'static')
 ]
 # TEMPLATE_DIRS = [
 #     os.path.join(BASE_DIR, 'templates')
 # ]
-MEDIA_ROOT = os.path.join(BASE_DIR, 'images')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

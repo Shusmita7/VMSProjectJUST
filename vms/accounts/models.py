@@ -73,7 +73,7 @@ class NewUserManager(BaseUserManager):
 #
 #
 # def get_default_profile_image():
-#     return "core/images/defaultuser.png"
+#     return "accounts/images/defaultuser.png"
 
 
 class NewUser(AbstractBaseUser):
@@ -86,7 +86,7 @@ class NewUser(AbstractBaseUser):
     date_joined = models.DateTimeField(verbose_name='Date Joined..', auto_now_add=True)
     last_login = models.DateTimeField(verbose_name='Last Logged in', auto_now=True)
     profile_image = models.ImageField(max_length=255, null=True, blank=True, default='defaultuser.png',
-                                      upload_to='core/images/')
+                                      upload_to='')
     active = models.BooleanField(default=True)
     staff = models.BooleanField(default=False)
     admin = models.BooleanField(default=False)

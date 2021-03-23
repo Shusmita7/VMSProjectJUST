@@ -9,23 +9,23 @@ from .models import NewUser
 
 
 def homePage(request):
-    return render(request, 'core/index.html')
+    return render(request, 'accounts/index.html')
 
 
 def noticePage(request):
-    return render(request, 'core/notice.html')
+    return render(request, 'accounts/notice.html')
 
 
 class SignUpView(CreateView):
     model = NewUser
     form_class = CustomUserCreationForm
     success_url = '/'
-    template_name = 'core/register.html'
+    template_name = 'accounts/register.html'
 
 
 class LoginView(FormView):
     form_class = LoginForm
-    success_url = '/'
+    success_url = 'vmsUser:user_home'
 
     def form_valid(self, form):
         request = self.request
@@ -35,12 +35,12 @@ class LoginView(FormView):
         if user is not None:
             login(request, user)
             messages.success(request, "You have been logged in")
-            return redirect('homePage')
+            return redirect('user_home')
         else:
             messages.error(request, "Error logging in - please try again")
             return redirect('login')
 
-    template_name = 'core/login.html'
+    template_name = 'accounts/login.html'
 
 
 def logoutUser(request):
