@@ -1,5 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.shortcuts import redirect
+from django.views.generic import CreateView, FormView
+
+
+from .forms import DriverForm, VehicleForm
+from .models import Driver, Vehicle
 
 
 def home(request):
@@ -28,6 +34,20 @@ def requests(request):
 
 def driver(request):
     return HttpResponse("This is vehicle page")
+
+
+class addDriverView(FormView):
+    model = Driver
+    form_class = DriverForm
+    template_name = 'vmsAdmin/add-driver.html'
+    success_url = 'admin_home'
+
+
+class addVehiclesView(FormView):
+    model = Vehicle
+    form_class = VehicleForm
+    template_name = 'vmsAdmin/add-vehicle.html'
+    success_url = 'admin_home'
 
 
 def vehicle(request):

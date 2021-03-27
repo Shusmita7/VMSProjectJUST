@@ -4,7 +4,7 @@ from django.contrib.auth.models import (
 )
 
 
-class NewUserManager(BaseUserManager):
+class UserManager(BaseUserManager):
     def create_user(self, username, email, full_name, dept_sec, designation, contact_no, is_active=True, is_staff=False,
                     is_admin=False, password=None):
         if not username:
@@ -76,7 +76,7 @@ class NewUserManager(BaseUserManager):
 #     return "accounts/images/defaultuser.png"
 
 
-class NewUser(AbstractBaseUser):
+class User(AbstractBaseUser):
     username = models.CharField(verbose_name='Username', max_length=100, blank=True, null=True, unique=True)
     email = models.EmailField(verbose_name='Email Address', max_length=100, unique=True, )
     full_name = models.CharField(verbose_name='Full Name', max_length=150, blank=True, null=True)
@@ -94,7 +94,13 @@ class NewUser(AbstractBaseUser):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username', 'full_name', 'dept_sec', 'designation', 'contact_no']
 
-    objects = NewUserManager()
+    objects = UserManager()
+
+    def get_absolute_url(self):
+        return "/users/%i/" % self.pk
+
+    def get_email(self):
+        return self.email
 
     def get_full_name(self):
         return self.full_name
@@ -141,3 +147,24 @@ class NewUser(AbstractBaseUser):
     def is_active(self):
         """Is the user active?"""
         return self.active
+
+
+class user_type(models.Model):
+    is_teacher = models.BooleanField(default=False)
+    is_chairman = models.BooleanField(default=False)
+    is_vadmin = models.BooleanField(default=False)
+    is_vsubadmin = models.BooleanField(default=False)
+    is_accountant = models.BooleanField(default=False)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        if self.is_teacher:
+            return User.get_email(self.user) + " - is_teacher"
+        elif self.is_chairman:
+            return User.get_email(self.user) + " - is_chairman"
+        elif self.is_vadmin:
+            return User.get_email(self.user) + " - is_vadmin"
+        elif self.is_vsubadmin:
+            return User.get_email(self.user) + " - is_vsubadmin"
+        else:
+            return User.get_email(self.user) + " - is_accountant"

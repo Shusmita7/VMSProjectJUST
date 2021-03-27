@@ -1,6 +1,6 @@
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, ReadOnlyPasswordHashField
 from django import forms
-from .models import NewUser
+from .models import User
 
 
 class UserAdminCreationForm(forms.ModelForm):
@@ -8,7 +8,7 @@ class UserAdminCreationForm(forms.ModelForm):
     password2 = forms.CharField(label='Password confirmation', widget=forms.PasswordInput)
 
     class Meta:
-        model = NewUser
+        model = User
         fields = ('username', 'email', 'full_name', 'dept_sec', 'designation', 'contact_no')
 
     def clean_password2(self):
@@ -34,7 +34,7 @@ class UserAdminChangeForm(forms.ModelForm):
     password = ReadOnlyPasswordHashField()
 
     class Meta:
-        model = NewUser
+        model = User
         fields = (
             'username', 'email', 'full_name', 'dept_sec', 'designation', 'contact_no', 'password', 'active', 'admin')
 
@@ -48,25 +48,25 @@ class LoginForm(forms.Form):
 
 
 class CustomUserCreationForm(UserCreationForm):
-    username = forms.CharField(label="Enter your Username", max_length=100,
+    username = forms.CharField(required=True, label="Enter your Username", max_length=100,
                                widget=forms.TextInput(attrs={'class': 'form-control'}))
-    full_name = forms.CharField(help_text="", label="Enter your Full Name", max_length=150,
+    full_name = forms.CharField(required=True, help_text="", label="Enter your Full Name", max_length=150,
                                 widget=forms.TextInput(attrs={'class': 'form-control'}))
-    dept_sec = forms.CharField(help_text="", label="Enter your Department or Section", max_length=100,
+    dept_sec = forms.CharField(required=True, help_text="", label="Enter your Department or Section", max_length=100,
                                widget=forms.TextInput(attrs={'class': 'form-control'}))
-    designation = forms.CharField(help_text="", label="Enter your Designation", max_length=100,
+    designation = forms.CharField(required=True, help_text="", label="Enter your Designation", max_length=100,
                                   widget=forms.TextInput(attrs={'class': 'form-control'}))
-    contact_no = forms.CharField(help_text="", label="Enter your Contact Number", max_length=11,
+    contact_no = forms.CharField(required=True, help_text="", label="Enter your Contact Number", max_length=11,
                                  widget=forms.TextInput(attrs={'class': 'form-control'}))
 
     class Meta(UserCreationForm.Meta):
-        model = NewUser
+        model = User
         fields = ('username', 'email', 'full_name', 'dept_sec', 'designation', 'contact_no', 'password1', 'password2')
 
 
 class CustomUserChangeForm(UserChangeForm):
     class Meta:
-        model = NewUser
+        model = User
         fields = UserChangeForm.Meta.fields
 
 

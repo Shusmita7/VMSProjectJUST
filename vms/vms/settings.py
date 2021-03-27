@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ]
 
-AUTH_USER_MODEL = 'accounts.NewUser'  # changing the default user app to custom
+AUTH_USER_MODEL = 'accounts.User'  # changing the default user app to custom
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -83,7 +83,7 @@ WSGI_APPLICATION = 'vms.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'vms',
+        'NAME': 'vms-2',
         'HOST': '127.0.0.1',
         'PORT': '3306',
         'USER': 'root',

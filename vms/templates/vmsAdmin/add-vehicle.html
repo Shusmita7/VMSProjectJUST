@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Vehicle</title>
+</head>
+<body>
+
+   <form method="POST" action="{% url 'add-vehicle' %}">
+       {% csrf_token %}
+       {{ form.as_p }}
+        <button type="submit" class="btn btn-secondary">Add Vehicle</button>
+    </form>
+
+</body>
+</html>
