@@ -1,14 +1,13 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, request
 from django.shortcuts import redirect
 from django.views.generic import CreateView, FormView
-
 
 from .forms import DriverForm, VehicleForm
 from .models import Driver, Vehicle
 
 
-def home(request):
+def adminHome(request):
     return HttpResponse("Hello, world. You're at the homepage of user.")
 
 
@@ -36,11 +35,23 @@ def driver(request):
     return HttpResponse("This is vehicle page")
 
 
-class addDriverView(FormView):
-    model = Driver
-    form_class = DriverForm
-    template_name = 'vmsAdmin/add-driver.html'
-    success_url = 'admin_home'
+def addDriver(request):
+    form = DriverForm()
+
+    if request.method == 'POST':
+        form = DriverForm()
+        try:
+            if form.is_valid():
+                form.save()
+                return redirect('adminHome')
+        except:
+            print('driver not added')
+    context = {'form': form}
+    return render(request, 'vmsAdmin/add-driver.html', context)
+    # model = Driver
+    # form_class = DriverForm
+    # template_name = 'vmsAdmin/add-driver.html'
+    # success_url = 'admin_home'
 
 
 class addVehiclesView(FormView):

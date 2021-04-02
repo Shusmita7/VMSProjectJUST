@@ -24,8 +24,6 @@ class DriverForm(forms.ModelForm):
                                 widget=forms.TextInput(attrs={'class': 'form-control'}))
     drvr_number = forms.CharField(required=True, label='Enter the Driver ID',
                                      widget=forms.TextInput(attrs={'class': 'form-control'}))
-    drvr_vcl = forms.CharField(required=True, label='Assign the Driver a Vehicle', max_length=200,
-                               widget=forms.TextInput(attrs={'class': 'form-control'}))
     drvr_contact_no = forms.CharField(required=True, label='Enter Phone Number of Driver',
                                          widget=forms.TextInput(attrs={'class': 'form-control'}))
     drvr_email = forms.EmailField(label='Enter Email Address of Driver',
