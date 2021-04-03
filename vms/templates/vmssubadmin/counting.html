@@ -1,0 +1,61 @@
+<html>
+<head>
+<title>Counter</title>
+{% load static %}
+<link rel="stylesheet" href="{% static 'vmssubadmin/css/counting.css' %}">
+<link rel="stylesheet"
+href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+    <script
+    src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+</head>
+    <body>
+        <div class="container counter-section">
+            <div class="row text-center">
+              <div class="col-md-3 counter-box">
+                <div class="drop">
+                  <img src="{% static 'images/double-decker-bus.png' %}" alt="">
+                  <p>Double Decker</p>
+                  <p class="counter">8</p>
+                </div>
+              </div>
+              <div class="col-md-3 counter-box">
+                <div class="drop">
+                  <img src="{% static 'images/singleDecker.png' %}" alt="">
+                  <p>Single Decker</p>
+                  <p class="counter">4</p>
+                </div>
+              </div>
+              <div class="col-md-3 counter-box">
+                <div class="drop">
+                  <img src="{% static 'images/microbus.png' %}" alt="">
+                  <p>Micro Bus</p>
+                  <p class="counter">7</p>
+                </div>
+              </div>
+              <div class="col-md-3 counter-box">
+                <div class="drop">
+                  <div class="icon-box"></div><img src="{% static 'images/driver.png' %}" alt="">
+                  <p>Total Drivers</p>
+                  <p class="counter">23</p>
+                </div>
+              </div>
+            </div>
+            </div>
+          </div>
+        <!-- counter -->
+          <script src="{% static 'js/jquery.counterup.min.js' %}"></script>
+          <script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
+         
+        <script>
+        jQuery(document).ready(function( $ )
+        {
+            $('.counter').counterUp({
+                delay: 10,
+                time: 1000
+            });
+        });
+        </script>
+
+    </body>
+</html>

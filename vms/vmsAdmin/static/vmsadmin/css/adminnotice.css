@@ -1,0 +1,50 @@
+.table_class
+{
+	margin: 20px 0px 20px 10px;
+	padding: 10px;
+}
+table{
+	border: none;
+	width: 1250px;
+	border-collapse:collapse;
+	margin: 10px 0px 50px 0px;
+}
+th{
+	border: none;
+	background-color: #8ad7f4;
+	color: white;
+	padding: 7px;
+	font-size: 22px;
+	text-align: center;
+}
+td{
+	background-color:white-space;
+	color: black;
+	padding: 10px;
+	border: none;
+	text-align: center;
+}
+
+h2.notice_title {
+    text-align: center;
+    display: block;
+    font-size: 34px;
+	margin-top: 60px;
+}
+tbody tr:nth-child(even) {
+    background-color: #e6f7fd;
+}
+tbody tr:hover{
+	background-color: #8ad7f4;
+	transition : 0.5s;
+}
+tbody tr:hover td{
+	color: white;
+}
+h1{
+    text-align: center;
+    }
+    tr td:nth-child(2){
+    width: 250px;
+    text-align: center;
+    }

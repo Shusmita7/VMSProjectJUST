@@ -1,0 +1,46 @@
+#container {
+	width: 1140px;
+	display: block;
+	margin: auto;
+}
+.notice_title {
+    display: block;
+    text-align: center;
+}
+
+hr {
+    border: 0px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    margin-bottom: 35px;
+}
+.notice_form {
+    width: 100%;
+    border: 1px solid #00000036;
+    padding: 8px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    font-family: initial;
+    font-size: 16px;
+    display: block;
+    outline: none;
+}
+.notice_form_name {
+    padding: 0px;
+    margin: 25px 0px 5px 0px;
+    padding-left: 2px;
+    font-size: 16px;
+}
+.notice_form_single {
+    margin-top: 20px;
+}
+
+.notice_add {
+    width: 100%;
+    background: #3DBDEC;
+    font-size: 20px;
+    margin-top: 20px;
+    padding : 5px;
+}
+#edit_notice {
+    margin: 60px 50px 50px 50px;
+}

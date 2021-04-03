@@ -1,0 +1,172 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+ul,
+ol {
+    list-style: none;
+
+}
+
+a,
+a:hover {
+    text-decoration: none;
+}
+
+img {
+    vertical-align: middle;
+}
+
+/* common css end */
+
+
+
+/* Navbar STARTS */
+
+/* navbar ENDS*/
+
+
+
+/* banner STARTS */
+
+.banner .banneritem{
+    background: url(../images/Banner.jpg) no-repeat center/cover;
+    height: 800px;
+    max-width: 100%;
+} 
+
+.welcometext{
+    position: relative;
+    width: 50%;
+    top: 575px;
+    left: 55px;
+    background-color: rgba(0, 0, 0, 0.721);
+    color: blanchedalmond;
+    text-align: left;
+    padding: 20px;
+    border-radius: 70px;
+    border-style: none;
+} 
+
+.textfirst{
+    font-size: 19px;
+}
+.textsecond{
+    font-size: 37px;
+}
+
+/* banner ENDS */
+
+
+
+
+
+
+
+
+/* message from VC */
+.message{
+    margin-bottom: 100px;
+}
+.message .msghead{
+    color:black;
+    width: 100%;
+    height: 70px;
+    margin: 70px 0px;
+    /* border-bottom: 5px;
+    border-image-source: linear-gradient(to left, #743ad5, #d53a9d); */
+    background: /* gradient can be an image */
+    linear-gradient(
+      to right, 
+      rgb(0, 0, 0) 0%,
+      rgb(81, 81, 81) 12%,
+      rgb(165, 165, 165) 47%,
+      rgb(255, 255, 255) 100%
+    )
+    left 
+    bottom
+    #fff    
+    no-repeat; 
+  background-size:100% 5px ;/* if linear-gradient, we need to resize it */
+    line-height: 65px;
+    border-radius: 0px 0px 0px 15px;
+    
+}
+.message .msgheadp{
+    height: auto;
+    width: 70%;
+    background: linear-gradient(to right,rgb(48, 185, 235),rgba(255, 255, 255,0.09)); 
+    /* display: inline-block; */
+    padding: 0px 20px;
+    text-transform: uppercase;
+    border-radius: 12px 0px 0px 12px;
+    
+}
+.msghead2{
+    font-family: 'Roboto', sans-serif;
+    font-size: 25px;
+    font-weight: 700;
+}
+.msghead1{
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+}
+
+.messagecontent{
+    width: 100%;
+    /* height: 500px; */
+    display: flex;
+    position: relative;
+    margin: 50px 0px;
+    padding: 50px 0px;
+}
+.msg{
+    width: 90%;
+    text-align: justify;
+    font-family: 'roboto', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    padding: 0px 0px 0px 0px;
+    
+}
+.message .messagecontent .middle{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+
+}
+.message .messagecontent .card{
+    border: none;
+    cursor: pointer;
+    
+}
+/* .message .card_middle .front{
+    margin-top: 20px;
+} */
+
+.message .messagecontent .card .cardtop img{
+    width: 400px;
+    height: 400px;
+}
+.message .messagecontent .card .cardbottom{
+    padding-left: 8px;
+}
+
+
+
+
+
+
+/* schedule Starts */
+
+
+
+.lolo{
+    height: 7000px;
+    width: 100%;
+    background-color: blue;
+    text-align: center;
+}

@@ -1,5 +1,6 @@
 from django import forms
-from .models import Vehicle, Driver
+from vmsadmin.models import Vehicles, Drivers
+
 
 
 class VehicleForm(forms.ModelForm):
@@ -15,7 +16,7 @@ class VehicleForm(forms.ModelForm):
                                   widget=forms.TextInput(attrs={'class': 'form-control'}))
 
     class Meta:
-        model = Vehicle
+        model = Vehicles
         fields = ('vcl_name', 'vcl_number', 'vcl_type', 'costprkm', 'costprhr')
 
 
@@ -24,11 +25,13 @@ class DriverForm(forms.ModelForm):
                                 widget=forms.TextInput(attrs={'class': 'form-control'}))
     drvr_number = forms.CharField(required=True, label='Enter the Driver ID',
                                      widget=forms.TextInput(attrs={'class': 'form-control'}))
+    drvr_vcl = forms.CharField(required=True, label='Assign the Driver a Vehicle', max_length=200,
+                               widget=forms.TextInput(attrs={'class': 'form-control'}))
     drvr_contact_no = forms.CharField(required=True, label='Enter Phone Number of Driver',
                                          widget=forms.TextInput(attrs={'class': 'form-control'}))
     drvr_email = forms.EmailField(label='Enter Email Address of Driver',
                                   widget=forms.TextInput(attrs={'class': 'form-control'}))
 
     class Meta:
-        model = Driver
+        model = Drivers
         fields = ('drvr_name', 'drvr_number', 'drvr_vcl', 'drvr_contact_no', 'drvr_email')

@@ -1,0 +1,45 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.icon-box .fa
+{
+    font-size: 40px;
+    margin: 25px auto;
+    color: #ffc800; 
+}
+
+.vehicledetails{
+    margin: 50px 0px;
+}
+.vehicledetails .drop{
+    
+    background: rgb(216, 216, 216);
+    padding: 10px 0px;
+    text-align: center;
+    border-radius: 30px;
+}
+.vehicledetails .drop img{
+    height: 100px;
+    width: 100px;
+}
+
+.vehicledetails .drop p{
+    font-size: 35px;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-weight: 500;
+}
+.counter-section
+{
+    margin: 10% auto;
+    color: rgb(15, 14, 14);
+}
+.counter-box p
+{
+    font-size: 35px;
+}
+
+.counter-box .counter
+{
+    font-size: 80px;
+}

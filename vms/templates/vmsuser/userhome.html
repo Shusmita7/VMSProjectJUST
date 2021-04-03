@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">     
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@500;600&family=Yanone+Kaffeesatz:wght@400;500;600&display=swap" rel="stylesheet">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'vmsuser/css/userhome.css' %}">
+</head>
+<body>
+    
+
+<div>
+    {% include 'vmsuser/usernavbar.html' %}
+</div>
+<div class="banner">
+  <div class="banneritem">
+    <div class="content">
+      <div class="welcometext">
+        <span class="textfirst">Welcome to</span> 
+        <br> 
+        <span class="textsecond">Jashore University of Science &amp; Technology</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Banner ENDS -->
+
+
+<section class="message">
+  <div class="">
+    <div class="container">
+      <div class="msghead">
+      <p class="msgheadp"><span class="msghead1">Message From</span> &nbsp; &nbsp; <span class="msghead2">VICE CHANCELLOR</span></p>
+      </div>
+    </div>
+    <div class="messagecontent">
+      <div class="row">
+        <div class="col-5">
+          
+          <div class="card middle">
+            <div class="cardtop">
+              <img src="{% static 'images/vc.jpg' %}" alt="VC">
+            </div>
+            <div class="cardbottom">
+              <br>
+              <h4>Professor Dr. Md. Anwar Hossain</h4>
+              <p>Vice Chancellor <br>
+                Jashore University of Science and Technology, <br>
+                Jashore, Bangladesh <br></p>
+            </div>
+          </div>
+  
+        </div>
+        <div class="col-7">
+          <div class="textmessage">
+            <p class="msg">
+              Jashore University of Science and Technology (JUST) has started a steady journey of reaching a new height of excellence in research and to achieve a unique milestone in promoting new ideas and innovation, and in serving the nation and the global community by creating enlightened and skilled professionals who can meet the challenges of the 21st century fostering the motto of ‘being the employer, not the employee’. In keeping with this purpose, JUST has already been declared a research university that aims at generating and advancing knowledge by cutting-edge research in its state-of-the-art laboratories and in the congenial academic ambience. Apart from these, JUST has international and local collaboration with a wide range of reputed academia and industry.
+              <br>
+      Our focus is also on promoting intellectual leadership through innovation and outcome-based education, and fostering social commitment through community affiliation. It gives me immense pleasure that the concerted efforts of the faculty members and students both from home and abroad have added feathers in our cap.
+      <br>
+      In order to achieve the rest of the noble goals and turn our country into the golden Bengal envisioned by the Father of the Nation Bangabandhu Sheikh Mujibur Rahman, we all have to work together relentlessly and wholeheartedly.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!--schedule STARTS-->
+
+
+
+  <!-- <iframe src="../html/mycost.html#breakdown" scrolling="no" sandbox="allow-scripts" title="Iframe Example"></iframe> -->
+<div>
+    {% include 'vmsuser/schedule.html' %}
+</div>
+
+
+
+
+<!-- schedule ENDS -->
+
+
+
+<!-- vehicle Details STARTS -->
+
+
+
+<section class="vehicledetails">
+
+ <div>
+    {% include 'vmsuser/counting.html' %}
+</div> 
+  
+</section>
+
+
+
+<!-- vehicle Details ENDS -->
+
+
+
+<section class="footer">
+  <div class="footercontent">
+    <footer> <small>&copy; Copyright 2021, Developed By Dept. of CSE, JUST.</small> </footer>
+  </div>
+</section>
+    
+
+ 
+</body>
+</html>

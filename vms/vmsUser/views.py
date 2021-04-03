@@ -1,30 +1,46 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 
+# Create your views here.
 
-def userHome(request):
-    return HttpResponse("Hello, world. You're at the homepage of user.")
-
+def home(request):
+    return render(request, 'vmsuser/userhome.html')
 
 def notice(request):
-    return HttpResponse("This is notice page")
+    return render(request, 'vmsuser/usernotice.html')
+
+def requisitionform(request):
+    return render(request, 'vmsuser/userrequisition.html')
+
+def mycost(request):
+    return render(request, 'vmsuser/usermyCost.html')
+
+# from django.shortcuts import render
+# from django.http import HttpResponse
 
 
-def requisition(request):
-    return HttpResponse("This is requisition page")
+# def userHome(request):
+#     return HttpResponse("Hello, world. You're at the homepage of user.")
 
 
-def forChairman(request):
-    return HttpResponse("This is the Chairman special page")
+# def notice(request):
+#     return HttpResponse("This is notice page")
 
 
-def usercost(request):
-    return HttpResponse("This is cost page")
+# def requisition(request):
+#     return HttpResponse("This is requisition page")
 
 
-def profile(request):
-    return HttpResponse("This is profile page")
+# def forChairman(request):
+#     return HttpResponse("This is the Chairman special page")
 
 
-def updateprofile(request):
-    return HttpResponse("This is Update profile page")
+# def usercost(request):
+#     return HttpResponse("This is cost page")
+
+
+# def profile(request):
+#     return HttpResponse("This is profile page")
+
+
+# def updateprofile(request):
+#     return HttpResponse("This is Update profile page")

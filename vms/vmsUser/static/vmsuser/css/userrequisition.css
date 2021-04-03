@@ -1,0 +1,97 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    width: 800px;
+    margin: auto;
+}
+
+/* .from_title {
+    border-bottom: 1px solid;
+    display: block;
+}
+
+.from_title img {
+    width: 10%;
+    /* display: flex; */
+}
+
+.from_title div {
+    width: 90%;
+    float: right;
+    text-align: center;
+} */
+
+form {
+    padding: 10px;
+    margin-top: 25px;
+}
+
+/* .title-form {
+    text-align: center;
+    margin-bottom: 30px;
+} */
+
+.form-single-1 {
+    width: 45%;
+}
+
+.form-single {
+    padding: 10px 0px;
+    width: 760px;
+    margin-bottom: 20px;
+}
+
+.form-single input {
+    padding: 8px;
+    font-size: 19px;
+    font-family: auto;
+    width: 760px;
+}
+.form-single label {
+    display: block;
+    margin-bottom: 7px;
+    font-size: 20px;
+}
+.for-si-date div input {
+    padding: 8px;
+    font-size: 19px;
+    font-family: auto;
+}
+.for-si-date {
+    overflow: hidden;
+    justify-content: space-between;
+    display: flex;
+    margin-bottom: 20px;
+    padding: 10px 0px;
+}
+
+.for-si-date div label {
+    display: block;
+    margin-bottom: 7px;
+    font-size: 20px;
+}
+.form-single-11 textarea {
+    width: 760px;
+    font-size: 19px;
+    font-family: auto;
+    padding: 10px;
+}
+.submit-form {
+    padding: 8px;
+    font-size: 19px;
+    font-family: auto;
+    width: 100%;
+    background: aqua;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+}
+#select-one{
+    padding: 8px;
+    font-size: 19px;
+    font-family: auto;
+    width: 780px;
+}

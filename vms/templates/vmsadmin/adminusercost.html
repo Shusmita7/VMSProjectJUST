@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title> Admin cost </title>
+</head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Cost</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+	integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+{% load static %}
+<link rel="stylesheet" href="{% static 'vmsadmin/css/adminusercost.css' %}">
+
+
+<body>
+    <div>
+    {% include 'vmsadmin/adminnavbar.html' %}
+    </div>
+	<div class="mainTable">
+		<h1> Requisition Cost </h1>
+		<br><br>
+
+		<table cellspacing="5">
+			<thead>
+				<th> SI </th>
+				<th> Requisition ID </th>
+				<th> Name </th>
+				<th> Journey Date </th>
+				<th> Journey Purpose </th>
+				<th> Vehicle Type </th>
+				<th> Cost </th>
+			</thead>
+			<tr>
+				<td> 01 </td>
+				<td> 10101 </td>
+				<td> Dr. Syed Md. Galib </td>
+				<td> 1-1-20 </td>
+				<td> official </td>
+				<td> VC Doptor (Micro-Bus) </td>
+				<td> 100 </td>
+			</tr>
+			<tr>
+				<td> 02 </td>
+				<td> 11100 </td>
+				<td> Md.Shafiuzzaman Hira </td>
+				<td> 2-2-21 </td>
+				<td> official </td>
+				<td> Din(Micro-Bus) </td>
+				<td> 200 </td>
+			</tr>
+			<tr>
+				<td> 03 </td>
+				<td> 20100 </td>
+				<td> Atish Dipongkor </td>
+				<td> 2-3-21 </td>
+				<td> personal </td>
+				<td> Kopotakkho(AC-Minibus) </td>
+				<td> 230 </td>
+			</tr>
+			<tr>
+				<td> 04 </td>
+				<td> 30012 </td>
+				<td> Md.Shafiuzzaman Hira </td>
+				<td> 3-1-20 </td>
+				<td> personal </td>
+				<td> Kopotakkho(AC-Minibus) </td>
+				<td> 150 </td>
+
+			</tr>
+			<tr>
+				<td> 05 </td>
+				<td> 40014 </td>
+				<td> Dr Md Asif Nashiry </td>
+				<td> 1-3-21 </td>
+				<td> personal </td>
+				<td> Kopotakkho(AC-Minibus) </td>
+				<td> 500 </td>
+
+			</tr>
+			<tr>
+				<td> 06 </td>
+				<td> 45022 </td>
+				<td> Jannatul Ferdous </td>
+				<td> 1-1-21 </td>
+				<td> official </td>
+				<td> Din(Micro-Bus) </td>
+				<td> 130 </td>
+
+			</tr>
+			<tr>
+				<td> 07 </td>
+				<td> 50000 </td>
+				<td> Nazmul Hossain </td>
+				<td> 2-2-21 </td>
+				<td> personal </td>
+				<td> Voirob (AC-Minibus) </td>
+				<td> 200 </td>
+			</tr>
+			<tr>
+				<td> 08 </td>
+				<td> 51010 </td>
+				<td> Yasir Arafat </td>
+				<td> 2-3-21 </td>
+				<td> personal </td>
+				<td> Voirob (AC-Minibus) </td>
+				<td> 180 </td>
+			</tr>
+		</table>
+	</div>
+</body>
+
+</html>

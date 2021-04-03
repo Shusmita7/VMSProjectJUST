@@ -1,0 +1,23 @@
+body, html {
+    font-family: 'Merriweather', serif;
+    background: #fff;
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    width: 100%;
+}
+a{
+    text-decoration: none;
+
+}
+/* a:hover{
+    color: blueviolet;
+    text-decoration: underline;
+} */
+tr:hover{
+    background-color: rgb(201, 190, 171);
+}
+tbody{
+    font-size: 14px;
+}

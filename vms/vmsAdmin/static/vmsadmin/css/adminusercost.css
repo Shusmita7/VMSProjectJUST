@@ -1,0 +1,72 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+ul,
+ol {
+    list-style: none;
+
+}
+
+a,
+a:hover {
+    text-decoration: none;
+}
+
+img {
+    vertical-align: middle;
+}
+
+/* common css end */
+
+
+
+table{
+	margin: 15px;
+	padding: 10px;
+	border: 20px;
+	width: 100%;
+	border-collapse:collapse;
+	margin: auto;
+}
+table thead th{
+	border: 20px;
+	color: black;
+	padding: 15px 20px;
+	font-size: 20px;
+	text-align: center;
+}
+table tr td{
+	background-color:white-space;
+	color: black;
+	padding: 12px;
+	font-size: 16px;
+	border: none;
+	text-align: center;
+}
+table tr:nth-child(even){
+	background-color: #e6f7fd;
+}
+table tr:hover{
+	background: #8ad7f4;
+	transition: 0.5s;
+}
+table tr:hover td{
+	color: white;
+}
+h1{
+	text-align: center;
+	font-size: 34px;
+}
+table tr td:nth-child(2){
+	width: 250px;
+	text-align: center;
+
+}
+.mainTable {
+    margin: 60px 50px 50px 50px;
+}
+thead {
+    background: #8ad7f4;
+}

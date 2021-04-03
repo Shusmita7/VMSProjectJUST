@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/95f402962e.js" crossorigin="anonymous"></script>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'vmsadmin/css/adminadddriver.css'%}">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div>
+        {% include 'vmsadmin/adminnavbar.html' %}
+    </div>
+    <section id="Manage_vehicle_section">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h2 class="title"><a href="{% url 'adminAddDriver' %}"><i class="fa fa-user mx-3" aria-hidden="true"></i>Add Driver</a></h2>
+                    <hr>
+                </div>
+            </div>
+ 
+            <form action="add_driver_core.php" method="POST">
+                <div class="row">
+                    <div class="col">
+                        <div class="from-group">
+                            <label for="Driver id" class="font-weight-bold">Driver id</label>
+                            <input type="text" name="driver_id" required="1" class="form-control"
+                                placeholder="Driver Id">
+                        </div>
+                        <div class="from-group">
+                            <label for="title" class="font-weight-bold">Driver Name </label>
+                            <input type="text" name="driver_name" required="1" class="form-control"
+                                placeholder="Driver Name">
+                        </div>
+                        <div class="from-group">
+                            <label for="title" class="font-weight-bold">Select Vehicle </label>
+                            <select name="driver_ride" class="form-control" id="default" class="form-control"
+                                required="required">
+                                <option value="-1">Select One </option>
+                                <option value="2">VC Doptor ; (Pick-Up) ; (যশোর-চ-৫১-০০২৮) </option>
+                                <option value="3">VC Doptor ; (Pick-Up) ; (যশোর-ঘ-১১-০০৬৫) </option>
+                                <option value="4">VC Doptor ; (Micro-Bus) ; (ঢাকা মেট্রো-গ-৩৭-৪২৬৯) </option>
+                                <option value="5">Register / Treasurer ; (Micro-Bus) ; (ঢাকা মেট্রো-চ-১২-৩৩৫৭)
+                                </option>
+                                <option value="6">Doptor-Prodhan ; (Micro-Bus) ; (ঢাকা মেট্রো-চ-৫১-০০২৩০)
+                                </option>
+                                <option value="7">Din ; (Micro-Bus) ; (ঢাকা মেট্রো-চ-৫১-০০২৯) </option>
+                                <option value="8">Proktor-Doptor ; (Micro-Bus) ; (ঢাকা মেট্রো-চ-৫১-০০১৪)
+                                </option>
+                                <option value="9">Voirob ; (AC-Minibus) ; (ঢাকা মেট্রো-ঝ-১১-০৫৩৮) </option>
+                                <option value="10">Kopotakkho ; (AC-Minibus) ; (যশোর-ঝ-১১-০০০৮) </option>
+                                <option value="11">Modhumoti ; (AC-Minibus) ; (যশোর-ঝ-১১-০০১১) </option>
+                                <option value="12">Kamini ; (Single Deck Bus) ; (যশোর-স-১১-০০০১) </option>
+                                <option value="13">Shapla ; (Pick-Up) ; (ঢাকা মেট্রো-স-১৪-০০৪২) </option>
+                                <option value="14">Chameli ; (Single Deck Bus) ; (যশোর-স-১১-০০৯ ) </option>
+                                <option value="15">Golap ; (Single Deck Bus) ; (যশোর-স-১১-০০০৮) </option>
+                                <option value="16">Chitra ; (Single Deck Bus) ; (যশোর-ঝ-১১-০০০৩) </option>
+                                <option value="17">Ambulance ; (Ambulance) ; (যশোর-ক-৭১-০০৩৪) </option>
+                                <option value="20">Oporajita ; (Double Deck Bus) ; (ঢাকা-মে-ব-১১-৫৭৩০ )
+                                </option>
+                                <option value="21">Joba ; (Double Deck Bus) ; (ঢাকা-মে-ব-১১-৫৮১৪) </option>
+                                <option value="22">Hasnahena ; (Double Deck Bus) ; (ঢাকা-মে-ব-১১-৬০৬২)
+                                </option>
+                                <option value="23">Konokchapa ; (Double Deck Bus) ; (ঢাকা-মে-ব-১১-৬০৯২)
+                                </option>
+                                <option value="24">Rojonigondha ; (Double Deck Bus) ; (ঢাকা-মে-ব-১১-৬১০৬)
+                                </option>
+                                <option value="25">Dolonchapa ; (Double Deck Bus) ; (ঢাকা-মে-ব-১১-৬১১৯)
+                                </option>
+
+                            </select>
+                        </div>
+                        <div class="from-group">
+                            <label for="phone no" class="font-weight-bold">Phone no</label>
+                            <input type="text" name="driver_number" class="form-control" placeholder="Mobile"
+                                required="1">
+                        </div>
+                        <div class="from-group">
+                            <label for="Email" class="font-weight-bold">Email</label>
+                            <input type="email" name="driver_email" class="form-control" placeholder="Email (Optional)">
+                        </div>
+
+                        <input type="submit" name="add_submit" class="form-control btn btn-primary my-2"
+                            value="Add Driver">
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
+    </section>
+</body>
+
+</html>
