@@ -16,6 +16,7 @@ class VehicleForm(forms.ModelForm):
                                   widget=forms.TextInput(attrs={'class': 'form-control'}))
 
     class Meta:
+        
         model = Vehicles
         fields = ('vcl_name', 'vcl_number', 'vcl_type', 'costprkm', 'costprhr')
 

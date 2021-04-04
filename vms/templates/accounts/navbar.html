@@ -24,11 +24,12 @@
           <a class="nav-link" href="{% url 'noticePage' %}"><span class="navicon">Notice</span></a>
         </li>
 
+        
 
         {% if user.is_authenticated %}
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'user_home' %}"><span class="navicon">{{ request.user.username }}</span></a>
-        </li>
+          <a class="nav-link" href="{% url 'Home' %}"><span class="navicon">{{ request.user.username }}</span></a>
+        </li> 
         <li class="nav-item">
           <a class="nav-link" href="{% url 'logout' %}"><span class="navicon">Logout</span></a>
         </li>

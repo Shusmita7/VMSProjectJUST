@@ -1,6 +1,9 @@
 from django.shortcuts import render
+from django.views.generic import CreateView, FormView
 
 # Create your views here.
+from vmsuser.forms import RequisitionForm
+from vmsuser.models import Requisitionforms
 
 def home(request):
     return render(request, 'vmsuser/userhome.html')
@@ -8,6 +11,12 @@ def home(request):
 def notice(request):
     return render(request, 'vmsuser/usernotice.html')
 
+
+class RequisitionformsView(FormView):
+    model = Requisitionforms
+    form_class = RequisitionForm
+    template_name = 'vmsuser/userrequisition.html'
+    success_url = 'Home'
 def requisitionform(request):
     return render(request, 'vmsuser/userrequisition.html')
 
