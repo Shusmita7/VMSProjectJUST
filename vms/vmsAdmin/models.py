@@ -1,6 +1,5 @@
 from django.db import models
 
- # Create your models here.
 
 class Vehicles(models.Model):
     vcl_name = models.CharField(verbose_name='Vehicle Name', max_length=200, blank=True, null=True)
@@ -10,9 +9,10 @@ class Vehicles(models.Model):
     costperhr = models.IntegerField(verbose_name='Cost per hour', null=True, blank=True)
     mileage = models.IntegerField(verbose_name='Mileage', null=True, blank=True)
     vcl_active = models.BooleanField(default=True)
-    
+
     def __str__(self):
         return self.vcl_name
+
 
 class Drivers(models.Model):
     drvr_number = models.CharField(verbose_name='Driver ID', max_length=50, blank=True, null=True)

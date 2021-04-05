@@ -1,55 +1,39 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import CreateView, FormView
 
-# Create your views here.
-from vmsuser.forms import RequisitionForm
-from vmsuser.models import Requisitionforms
+from .forms import RequisitionForm
+from .models import Requisition
+
 
 def home(request):
-    return render(request, 'vmsuser/userhome.html')
+    return render(request, 'vmsUser/userhome.html')
+
 
 def notice(request):
-    return render(request, 'vmsuser/usernotice.html')
+    return render(request, 'vmsUser/usernotice.html')
 
 
 class RequisitionformsView(FormView):
-    model = Requisitionforms
+    model = Requisition
     form_class = RequisitionForm
-    template_name = 'vmsuser/userrequisition.html'
+    template_name = 'vmsUser/userrequisition.html'
     success_url = 'Home'
-def requisitionform(request):
-    return render(request, 'vmsuser/userrequisition.html')
+
+    def requisition(self, form):
+        form = RequisitionForm()
+        try:
+            if form.is_valid():
+                form.save()
+                return redirect('Home')
+        except:
+                print('Requisition not added')
+        context = {'form': form}
+        return render('vmsUser/userrequisition.html', context)
+
+
+# def requisitionform(request):
+#     return render(request, 'vmsUser/userrequisition.html')
+
 
 def mycost(request):
-    return render(request, 'vmsuser/usermyCost.html')
-
-# from django.shortcuts import render
-# from django.http import HttpResponse
-
-
-# def userHome(request):
-#     return HttpResponse("Hello, world. You're at the homepage of user.")
-
-
-# def notice(request):
-#     return HttpResponse("This is notice page")
-
-
-# def requisition(request):
-#     return HttpResponse("This is requisition page")
-
-
-# def forChairman(request):
-#     return HttpResponse("This is the Chairman special page")
-
-
-# def usercost(request):
-#     return HttpResponse("This is cost page")
-
-
-# def profile(request):
-#     return HttpResponse("This is profile page")
-
-
-# def updateprofile(request):
-#     return HttpResponse("This is Update profile page")
+    return render(request, 'vmsUser/usermyCost.html')

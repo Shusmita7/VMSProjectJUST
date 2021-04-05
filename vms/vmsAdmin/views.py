@@ -2,44 +2,60 @@ from django.shortcuts import render
 from django.shortcuts import redirect
 from django.views.generic import CreateView, FormView
 
-# Create your views here.
 from .forms import DriverForm, VehicleForm
 from .models import Drivers, Vehicles
 
+
 def adminHome(request):
-    return render(request, 'vmsadmin/adminhome.html')
+    return render(request, 'vmsAdmin/adminhome.html')
+
 
 def adminNotice(request):
-    return render(request, 'vmsadmin/adminnotice.html')
+    return render(request, 'vmsAdmin/adminnotice.html')
+
 
 def adminEditnotice(request):
-    return render(request, 'vmsadmin/admineditnotice.html')
+    return render(request, 'vmsAdmin/admineditnotice.html')
+
 
 def adminUserCost(request):
-    return render(request, 'vmsadmin/adminusercost.html')
+    return render(request, 'vmsAdmin/adminusercost.html')
+
 
 def adminUserRequest(request):
-    return render(request, 'vmsadmin/adminuserrequest.html')
+    return render(request, 'vmsAdmin/adminuserrequest.html')
+
 
 def adminVehicle(request):
-    return render(request, 'vmsadmin/adminvehicle.html')
+    return render(request, 'vmsAdmin/adminvehicle.html')
+
 
 class addVehiclesView(FormView):
     model = Vehicles
     form_class = VehicleForm
-    template_name = 'vmsadmin/adminaddvehicle.html'
+    template_name = 'vmsAdmin/adminaddvehicle.html'
     success_url = 'AdminHome'
+
+
+
+
 def adminAddvehicle(request):
-     return render(request, 'vmsadmin/adminaddvehicle.html')
+    return render(request, 'vmsAdmin/adminaddvehicle.html')
+
+
 def adminDriver(request):
-    return render(request, 'vmsadmin/admindriver.html')
+    return render(request, 'vmsAdmin/admindriver.html')
+
+
 class addDriverView(FormView):
     model = Drivers
     form_class = DriverForm
-    template_name = 'vmsadmin/adminadddriver.html'
+    template_name = 'vmsAdmin/adminadddriver.html'
     success_url = 'AdminHome'
+
+
 def adminAdddriver(request):
-     return render(request, 'vmsadmin/adminadddriver.html')
+    return render(request, 'vmsAdmin/adminadddriver.html')
 
 # from django.shortcuts import render
 # from django.http import HttpResponse, request

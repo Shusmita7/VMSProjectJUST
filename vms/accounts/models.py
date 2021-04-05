@@ -6,7 +6,8 @@ from django.contrib.auth.models import (
 
 class UserManager(BaseUserManager):
     def create_user(self, username, email, full_name, dept_sec, designation, contact_no, is_active=True, is_staff=False,
-                    is_admin=False, password=None):
+                    is_admin=False, is_chairman=False, is_vadmin=False, is_vsubadmin=False, is_accountant=False,
+                    password=None):
         if not username:
             raise ValueError("Users must have a Username")
         if not email:
@@ -35,6 +36,10 @@ class UserManager(BaseUserManager):
         user.staff = is_staff
         user.admin = is_admin
         user.active = is_active
+        user.chairman = is_chairman
+        user.vadmin = is_vadmin
+        user.vsubadmin = is_vsubadmin
+        user.accountant = is_accountant
         user.save(using=self._db)
         return user
 
@@ -49,6 +54,62 @@ class UserManager(BaseUserManager):
             password=password,
         )
         user.staff = True
+        user.save(using=self._db)
+        return user
+
+    def create_chairman(self, username, email, full_name, dept_sec, designation, contact_no, password):
+        user = self.create_user(
+            username,
+            email,
+            full_name,
+            dept_sec,
+            designation,
+            contact_no,
+            password=password,
+        )
+        user.chairman = True
+        user.save(using=self._db)
+        return user
+
+    def create_vadmin(self, username, email, full_name, dept_sec, designation, contact_no, password):
+        user = self.create_user(
+            username,
+            email,
+            full_name,
+            dept_sec,
+            designation,
+            contact_no,
+            password=password,
+        )
+        user.vadmin = True
+        user.save(using=self._db)
+        return user
+
+    def create_vsubadmin(self, username, email, full_name, dept_sec, designation, contact_no, password):
+        user = self.create_user(
+            username,
+            email,
+            full_name,
+            dept_sec,
+            designation,
+            contact_no,
+            password=password,
+        )
+        user.vsubadmin = True
+        user.save(using=self._db)
+        return user
+
+    def create_accountant(self, username, email, full_name, dept_sec, designation, contact_no, password):
+        user = self.create_user(
+            username,
+            email,
+            full_name,
+            dept_sec,
+            designation,
+            contact_no,
+            password=password,
+        )
+        user.accountant = True
         user.save(using=self._db)
         return user
 
@@ -68,14 +129,6 @@ class UserManager(BaseUserManager):
         return user
 
 
-# def get_profile_image_filepath(self):
-#     return f'profile_images/{self.pk}/{"profile_image.png"}'
-#
-#
-# def get_default_profile_image():
-#     return "accounts/images/defaultuser.png"
-
-
 class User(AbstractBaseUser):
     username = models.CharField(verbose_name='Username', max_length=100, blank=True, null=True, unique=True)
     email = models.EmailField(verbose_name='Email Address', max_length=100, unique=True, )
@@ -90,14 +143,15 @@ class User(AbstractBaseUser):
     active = models.BooleanField(default=True)
     staff = models.BooleanField(default=False)
     admin = models.BooleanField(default=False)
+    chairman = models.BooleanField(default=False)
+    vadmin = models.BooleanField(default=False)
+    vsubadmin = models.BooleanField(default=False)
+    accountant = models.BooleanField(default=False)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username', 'full_name', 'dept_sec', 'designation', 'contact_no']
 
     objects = UserManager()
-
-    def get_absolute_url(self):
-        return "/users/%i/" % self.pk
 
     def get_email(self):
         return self.email
@@ -148,23 +202,22 @@ class User(AbstractBaseUser):
         """Is the user active?"""
         return self.active
 
+    @property
+    def is_chairman(self):
+        """Is the user chairman?"""
+        return self.active
 
-class user_type(models.Model):
-    is_teacher = models.BooleanField(default=False)
-    is_chairman = models.BooleanField(default=False)
-    is_vadmin = models.BooleanField(default=False)
-    is_vsubadmin = models.BooleanField(default=False)
-    is_accountant = models.BooleanField(default=False)
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    @property
+    def is_vadmin(self):
+        """Is the user vadmin?"""
+        return self.active
 
-    def __str__(self):
-        if self.is_teacher:
-            return User.get_email(self.user) + " - is_teacher"
-        elif self.is_chairman:
-            return User.get_email(self.user) + " - is_chairman"
-        elif self.is_vadmin:
-            return User.get_email(self.user) + " - is_vadmin"
-        elif self.is_vsubadmin:
-            return User.get_email(self.user) + " - is_vsubadmin"
-        else:
-            return User.get_email(self.user) + " - is_accountant"
+    @property
+    def is_vsubadmin(self):
+        """Is the user vsubadmin?"""
+        return self.active
+
+    @property
+    def is_accountant(self):
+        """Is the user accountant?"""
+        return self.active

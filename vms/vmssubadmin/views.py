@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.shortcuts import redirect
 # from django.views.generic import CreateView, FormView
 
-# Create your views here.
+
 # from .forms import DriverForm, VehicleForm
 # from .models import Drivers, Vehicles
 

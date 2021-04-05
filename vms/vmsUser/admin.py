@@ -1,6 +1,5 @@
 from django.contrib import admin
 
-# Register your models here.
-from vmsuser.models import Requisitionforms
+from .models import Requisition
 
-admin.site.register(Requisitionforms)
+admin.site.register(Requisition)

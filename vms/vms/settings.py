@@ -33,8 +33,8 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'accounts',
     'vmssubadmin',
-    'vmsadmin',
-    'vmsuser',
+    'vmsAdmin',
+    'vmsUser',
     'accountant',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -87,7 +87,7 @@ DATABASES = {
         'HOST': '127.0.0.1',
         'PORT': '3306',
         'USER': 'root',
-        'PASSWORD': 'shusmita7@yahoo',
+        'PASSWORD': 'root',
     }
 }
 
