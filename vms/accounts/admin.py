@@ -14,15 +14,16 @@ class UserAdmin(BaseUserAdmin):
     readonly_fields = ('id', 'date_joined', 'last_login')
     fieldsets = (
         (None, {'fields': ('username', 'email', 'full_name', 'dept_sec', 'designation', 'contact_no', 'password',
-                           'profile_image')}),
+                           'profile_image',)}),
         ('Personal info', {'fields': ()}),
-        ('Permissions', {'fields': ('admin', 'staff', 'active')}),
+        ('Permissions', {'fields': ('admin', 'staff', 'active', 'chairman', 'vadmin', 'vsubadmin', 'accountant',)}),
     )
 
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('username', 'email', 'full_name', 'dept_sec', 'designation', 'contact_no', 'password1', 'password2', 'staff', 'active')}
+            'fields': ('username', 'email', 'full_name', 'dept_sec', 'designation', 'contact_no', 'password1',
+                       'password2', 'staff', 'active', 'chairman', 'vadmin', 'vsubadmin', 'accountant')}
          ),
     )
     search_fields = ('username', 'email', 'full_name', 'dept_sec', 'designation', 'contact_no')

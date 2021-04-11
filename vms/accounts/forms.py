@@ -50,6 +50,8 @@ class LoginForm(forms.Form):
 class CustomUserCreationForm(UserCreationForm):
     username = forms.CharField(required=True, label="Enter your Username", max_length=100,
                                widget=forms.TextInput(attrs={'class': 'form-control'}))
+    email = forms.EmailField(required=True, label="Enter your Email Address", max_length=100,
+                             widget=forms.TextInput(attrs={'class': 'form-control'}))
     full_name = forms.CharField(required=True, help_text="", label="Enter your Full Name", max_length=150,
                                 widget=forms.TextInput(attrs={'class': 'form-control'}))
     dept_sec = forms.CharField(required=True, help_text="", label="Enter your Department or Section", max_length=100,
@@ -68,5 +70,3 @@ class CustomUserChangeForm(UserChangeForm):
     class Meta:
         model = User
         fields = UserChangeForm.Meta.fields
-
-
