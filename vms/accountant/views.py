@@ -2,11 +2,11 @@ from django.http import HttpResponse
 
 
 def home(request):
-    return HttpResponse("Hello, world. You're at the homepage of user.")
+    return HttpResponse("Hello, world. You're at the homepage of accountant.")
 
 
 def notice(request):
-    return HttpResponse("This is notice page")
+    return HttpResponse("This is notice page for accountant")
 
 
 def logBook(request):

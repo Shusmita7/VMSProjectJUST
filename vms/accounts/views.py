@@ -9,11 +9,11 @@ from .models import User
 
 
 def homePage(request):
-    return render(request, 'accounts/index.html')
+    return render(request, 'accounts/accountshome.html')
 
 
 def noticePage(request):
-    return render(request, 'accounts/notice.html')
+    return render(request, 'accounts/accountsnotice.html')
 
 
 class SignUpView(CreateView):
