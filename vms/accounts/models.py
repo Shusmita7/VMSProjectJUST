@@ -205,19 +205,19 @@ class User(AbstractBaseUser):
     @property
     def is_chairman(self):
         """Is the user chairman?"""
-        return self.active
+        return self.chairman
 
     @property
     def is_vadmin(self):
         """Is the user vadmin?"""
-        return self.active
+        return self.vadmin
 
     @property
     def is_vsubadmin(self):
         """Is the user vsubadmin?"""
-        return self.active
+        return self.vsubadmin
 
     @property
     def is_accountant(self):
         """Is the user accountant?"""
-        return self.active
+        return self.accountant

@@ -22,7 +22,7 @@
     <section class="requision_form">
         <div class="container">
             <div class="requision_form_wrapper">
-                <form>
+                <form action="{% url 'Requisition'%}" method="POST">
                     {% csrf_token %}
 
                     {{ form.as_p }}

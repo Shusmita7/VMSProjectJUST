@@ -11,19 +11,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/95f402962e.js" crossorigin="anonymous"></script>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'vmsadmin/css/adminaddvehicle.css'%}">
+    <link rel="stylesheet" href="{% static 'vmsAdmin/css/adminaddvehicle.css'%}">
     <title>Document</title>
 </head>
 
 <body>
-    <form method="POST" action="{% url 'adminAddVehicle' %}">
-        {% csrf_token %}
-        {{ form.as_p }}
-         <!-- <button type="submit" class="btn btn-secondary"></button> -->
-     </form>
-
 <div>
-    {% include 'vmsadmin/adminnavbar.html' %}
+    {% include 'vmsAdmin/adminnavbar.html' %}
 </div>
 
     <section id="Add_vehicle_section">
@@ -34,41 +28,18 @@
                     <hr>
                 </div>
             </div>
-            <form>
-                <div class="row">
-                    <div class="col">
-                        <div class="from-group">
-                            <label for="Vehicle id" class="font-weight-bold">Vehicle
-                                id
-                            </label>
-                            <input type="text" class="form-control" required="1" placeholder="Vehicle Id">
-                        </div>
-                        <div class="from-group">
-                            <label for="title" class="font-weight-bold">Vehicle name</label>
-                            <input type="text" name="bus_name" required="1" class="form-control"
-                                placeholder="Vehicle Name">
-                        </div>
-                        <div class="from-group">
-                            <label for="title" class="font-weight-bold">Select vehicle
-                                type
-                            </label>
-                            <select class="form-control">
-                                <option value="-1">Vehicle Type </option>
-                                <option value="Ambulance">Ambulance</option>
-                                <option value="Micro-Bus">Micro-Bus</option>
-                                <option value="Pick-Up">Pick-Up</option>
-                                <option value="AC-Minibus">AC-Minibus</option>
-                                <option value="Non-AC Minibus">Non-AC Minibus</option>
-                                <option value="Single Deck Bus">Single Deck Bus</option>
-                                <option value="Double Deck Bus">Double Deck Bus</option>
-                            </select>
-                        </div>
-                        <input type="submit" class="form-control btn btn-primary my-3" value="Add Vehicle">
-                    </div>
-                </div>
-            </form>
+
+
+             <form action="{% url 'adminAddVehicle'%}" method="POST">
+                    {% csrf_token %}
+
+                    {{ form.as_p }}
+
+                    <input class="submit-form" type="submit" name="submit" value="Add Vehicle">
+             </form>
+
         </div>
-    </section> 
+    </section>
 </body>
 
 </html>
