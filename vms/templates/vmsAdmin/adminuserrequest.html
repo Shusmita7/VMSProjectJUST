@@ -1,0 +1,56 @@
+<div class="row">
+                <div class="col">
+                    <table class="table table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th>Sl.</th>
+                                <th>User name</th>
+                                <th>User Email</th>
+                                <th>Full Name</th>
+                                <th>Dept./Section</th>
+                                <th>Designation</th>
+                                <th>Contact Number</th>
+                                <th>Apply Date</th>
+                                <th>Requisition Purpose</th>
+                                <th>Requisition Date</th>
+                                <th>Vehicle Type</th>
+                                <th>Destination</th>
+                                <th>Starting Time</th>
+                                <th>Return Time</th>
+                                <th>Journey Details</th>
+                            </tr>
+                        </thead>
+
+
+
+
+                        <tbody>
+                           {% for i in requisitions %}
+
+                            <tr class="table-info">
+                                <td> {{ forloop.counter }} </td>
+                                 <td> {{i.created_by.username}} </td>
+                                <td> {{i.created_by.email}} </td>
+                                <td> {{i.created_by.full_name}} </td>
+                                <td> {{i.created_by.dept_sec}} </td>
+                                <td> {{i.created_by.designation}} </td>
+                                <td> {{i.created_by.contact_no}} </td>
+                                <td> {{i.aplctn_date}} </td>
+                                <td> {{i.jour_purpose}} </td>
+                                <td> {{i.jour_date}} </td>
+                                <td> {{i.vcl_type}} </td>
+                                <td> {{i.destination}} </td>
+                                <td> {{i.departr_time}} </td>
+                                <td> {{i.rtrn_time}} </td>
+                                <td> {{i.jour_details}} </td>
+
+
+                            </tr>
+
+                        {% endfor %}
+
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>

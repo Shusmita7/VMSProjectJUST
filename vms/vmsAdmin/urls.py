@@ -7,6 +7,7 @@ urlpatterns = [
     path('notice/edit-notice/', views.adminEditnotice, name='adminEditNotice'),
     path('user-cost/', views.adminUserCost, name='AdminUserCost'),
     path('request/', views.adminUserRequest, name='AdminUserRequest'),
+    path('view-user', views.viewUsers, name='viewUser'),
     path('vehicle/', views.adminVehicle, name='AdminVehicle'),
     path('vehicle/add-vehicle/', views.addVehicle, name='adminAddVehicle'),
     path('driver/', views.adminDriver, name='AdminDriver'),

@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth import get_user_model
+from django.urls import reverse
 
 User = get_user_model()
 
@@ -19,7 +20,14 @@ class Requisition(models.Model):
     departr_time = models.TimeField(verbose_name='Departure Time', blank=True, null=True)
     rtrn_time = models.TimeField(verbose_name='Return Time', blank=True, null=True)
     jour_details = models.CharField(verbose_name='Journey Details', max_length=400, blank=True, null=True)
+    is_requisited = models.BooleanField(default=True, null=True)
     created_by = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
-        return self.jour_purpose
+        return str(self.created_by)
+
+    def get_absolute_url(self):
+        return reverse('success', kwargs={"id": self.pk})
+
+# class Cost(models.Model):
+#     re

@@ -24,8 +24,11 @@
             <a class="nav-link" href="{% url 'AdminUserCost' %}"><span class="navicon">UserCost</span></a> 
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#"><span class="navicon">Request</span></a>
-          </li> 
+            <a class="nav-link" href="{% url 'AdminUserRequest' %}"><span class="navicon">Request</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'viewUser' %}"><span class="navicon">Users list</span></a>
+          </li>
           <li class="nav-item"> 
             <a class="nav-link" href="{% url 'AdminVehicle' %}"><span class="navicon">Vehicle</span></a>
           </li>
@@ -35,7 +38,7 @@
           <li class="nav-item">
             <a class="nav-link" href="#"><span class="navicon">LogOut</span></a>
           </li>
-  
+        </ul>
       </div>
     </nav>
   </div> 

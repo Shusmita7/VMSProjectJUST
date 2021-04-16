@@ -8,7 +8,9 @@ from django.contrib.auth import get_user_model
 
 from .forms import RequisitionForm
 from .models import Requisition
+
 User = get_user_model()
+
 
 # from ..accounts.decorators import teacher_only
 
@@ -45,63 +47,45 @@ def notice(request):
 
 
 #
-# @method_decorator(login_required(login_url='login'), name='dispatch')
-# # @method_decorator(teacher_only, name='dispatch')
-# class RequisitionCreate(SuccessMessageMixin, CreateView):
-#     model = Requisition
-#     form_class = RequisitionForm
-#     template_name = 'vmsUser/userrequisition.html'
+@method_decorator(login_required(login_url='login'), name='dispatch')
+# @method_decorator(teacher_only, name='dispatch')
+class RequisitionCreate(SuccessMessageMixin, CreateView):
+    model = Requisition
+    form_class = RequisitionForm
+    template_name = 'vmsUser/userrequisition.html'
+
+    def form_valid(self, form):
+        request = self.request
+        form.save()
+        form.instance.created_by = self.request.user
+        return super().form_valid(form)
+
+
+# def createRequisition(request, pk):
+#     form = RequisitionForm()
+#     if request.method == 'POST':
+#         form = RequisitionForm(request.POST)
+#         if form.is_valid():
+#             requisition = super().form.save(commit=False)
+#             userreq = User.objects.create()
+#             userreq.username = request.user
+#             userreq.email = ''
+#             userreq.full_name = ''
+#             userreq.designation = ''
+#             userreq.dept_sec = ''
+#             userreq.contact_no = ''
+#             userreq.save()
+#             requisition.save()
 #
-#     # success_url = '/success/'
-#     # success_message = "Requisition Successful"
-#
-#     def form_valid(self, form):
-#         # request = self.request
-#         # form.save()
-#         # form.instance.created_by = self.request.user
-#         # # messages.success('You have successfully completed your requisition request')
-#         # return super().form_valid(form)
-#         response = super().form_valid(form)
-#         success_message = self.get_success_message("Requisition Successful")
-#         if success_message:
-#             messages.success(self.request, success_message)
-#             # redirect('Home')
-#         return response
+#             return redirect('Home')
+#     context = {'form': form}
+#     return render(request, 'vmsUser/userrequisition.html', context)
 
 
-# def requisitionform(request):
-#     return render(request, 'vmsUser/userrequisition.html')
-@login_required(login_url='login')
-def createRequisition(request):
-    form = RequisitionForm()
-    if request.method == 'POST':
-        form = RequisitionForm(request.POST)
-        if form.is_valid():
-            requisition = form.save(commit=False)
-            userreq = User.objects.create()
-            userreq.username = request.user
-            userreq.email = ''
-            userreq.full_name = ''
-            userreq.designation = ''
-            userreq.dept_sec = ''
-            userreq.contact_no = ''
-            userreq.save()
-            requisition.save()
-
-            return redirect('Home')
-    context = {'form': form}
-    return render(request, 'vmsUser/userrequisition.html', context)
-
-
-# def RequisitionSuccess(request):
-#     messages.success('You have successfully completed your requisition request')
-#     return request
-#
-#
-# def RequisitionDetail(request, pk):
-#     return render(request, 'requisitionDetail.html', {
-#         'requisition': get_object_or_404(Requisition, pk=id)
-#     })
+def RequisitionSuccess(request, id=None):
+    return render(request, 'vmsUser/requisitionDetail.html', {
+        'requisition': get_object_or_404(Requisition, pk=id)
+    })
 
 
 @login_required(login_url='login')

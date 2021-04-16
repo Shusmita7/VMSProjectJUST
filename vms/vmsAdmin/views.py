@@ -1,11 +1,16 @@
-from django.shortcuts import render
-from django.shortcuts import redirect
+from django.shortcuts import render, redirect
 from django.views.generic import CreateView, FormView
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import get_user_model
 from django.utils.decorators import method_decorator
+# import sys
+#
+# sys.path.append("..")
 
 from .forms import DriverForm, VehicleForm
 from .models import Drivers, Vehicles
+# from ..accounts.decorators import admin_only
+from vmsUser.models import Requisition
 
 
 # def admin_only(view_func):
@@ -54,7 +59,9 @@ def adminUserCost(request):
 @login_required(login_url='login')
 # @admin_only
 def adminUserRequest(request):
-    return render(request, 'vmsAdmin/adminuserrequest.html')
+    return render(request, 'vmsAdmin/adminuserrequest.html', {
+        'requisitions': Requisition.objects.all()
+    })
 
 
 @login_required(login_url='login')
@@ -64,13 +71,6 @@ def adminVehicle(request):
     return render(request, 'vmsAdmin/adminvehicle.html', {'vehicle': vehicle})
 
 
-# @method_decorator(login_required(login_url='login'), name='dispatch')
-# # @method_decorator(admin_only, name='dispatch')
-# class addVehiclesView(FormView):
-#     model = Vehicles
-#     form_class = VehicleForm
-#     template_name = 'vmsAdmin/adminaddvehicle.html'
-#     success_url = 'AdminHome'
 @login_required(login_url='login')
 def addVehicle(request):
     form = VehicleForm()
@@ -83,10 +83,11 @@ def addVehicle(request):
     return render(request, 'vmsAdmin/adminaddvehicle.html', context)
 
 
-# @login_required(login_url='login')
-# @admin_only
-# def adminAddvehicle(request):
-#     return render(request, 'vmsAdmin/adminaddvehicle.html')
+@login_required(login_url='login')
+def viewUsers(request):
+    User = get_user_model()
+    users = User.objects.values()
+    return render(request, 'vmsAdmin/viewUser.html', {'user': users})
 
 
 @login_required(login_url='login')
@@ -110,19 +111,6 @@ def addDriver(request):
             return redirect('AdminDriver')
     context = {'form': form}
     return render(request, 'vmsAdmin/adminadddriver.html', context)
-# @method_decorator(login_required(login_url='login'), name='dispatch')
-# # @method_decorator(admin_only, name='dispatch')
-# class addDriverView(FormView):
-#     model = Drivers
-#     form_class = DriverForm
-#     template_name = 'vmsAdmin/adminadddriver.html'
-#     success_url = 'AdminHome'
-#
-#
-# @login_required(login_url='login')
-# # @admin_only
-# def adminAdddriver(request):
-#     return render(request, 'vmsAdmin/adminadddriver.html')
 
 # def addDriver(request):
 #     form = DriverForm()
