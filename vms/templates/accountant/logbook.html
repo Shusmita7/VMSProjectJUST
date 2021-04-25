@@ -5,7 +5,10 @@
     <title>LogBook</title>
 </head>
 <body>
+<table>
     {{ requisite }}
+</table>
+
     <form action="{% url 'logBook'%}" method="POST">
         {% csrf_token %}
 

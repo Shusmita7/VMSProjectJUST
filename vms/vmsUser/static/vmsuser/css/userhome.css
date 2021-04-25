@@ -85,7 +85,7 @@ img {
 /* banner STARTS */
 
 .banner .banneritem{
-    background: url(../img/Banner.jpg) no-repeat center/cover;
+    background: url(../images/Banner.jpg) no-repeat center/cover;
     height: 800px;
     max-width: 100%;
 }

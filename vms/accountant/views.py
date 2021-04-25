@@ -42,23 +42,23 @@ def notice(request):
     return HttpResponse("This is notice page for accountant")
 
 
-@login_required(login_url='login')
-def logBook(request):
-    form = AccForm()
-    if request.method == 'POST':
-        form = AccForm(request.POST)
-        if form.is_valid():
-            acc_req = form.save(commit=False)
-            requisition = Requisition.objects.create()
-            requisition.vcl_type = ''
-            requisition.destination = ''
-            requisition.save()
-            acc_req.save()
-            return redirect('acc_home')
-    # requisite = Requisition.objects.filter(is_requisited=True).order_by('jour_date')[:1]
-    # 'requisite': requisite
-    context = {'form': form}
-    return render(request, 'accountant/logbook.html', context)
+# @login_required(login_url='login')
+# def logBook(request):
+#     form = AccForm()
+#     if request.method == 'POST':
+#         form = AccForm(request.POST)
+#         if form.is_valid():
+#             acc_req = form.save(commit=False)
+#             requisition = Requisition.objects.create()
+#             requisition.vcl_type = ''
+#             requisition.destination = ''
+#             requisition.save()
+#             acc_req.save()
+#             # return redirect('acc_home')
+#     # requisite = Requisition.objects.filter(is_requisited=True).order_by('jour_date')[:1]
+#     # 'requisite': requisite
+#     context = {'form': form}
+#     return render(request, 'accountant/logbook.html', context)
 
 
 def InfoSuccess(request, id=None):
@@ -67,15 +67,26 @@ def InfoSuccess(request, id=None):
     })
 
 
-# @method_decorator(login_required(login_url='login'), name='dispatch')
-# # @method_decorator(teacher_only, name='dispatch')
-# class LogBookCreate(SuccessMessageMixin, CreateView):
-#     model = LogBook
-#     form_class = AccForm
-#     template_name = 'accountant/logbook.html'
-#
-#     def form_valid(self, form):
-#         request = self.request
-#         form.save()
-#         form.instance.created_by = self.request.user
-#         return super().form_valid(form)
+@method_decorator(login_required(login_url='login'), name='dispatch')
+# @method_decorator(teacher_only, name='dispatch')
+class LogBookCreate(SuccessMessageMixin, CreateView):
+    model = LogBook
+    form_class = AccForm
+    template_name = 'accountant/logbook.html'
+
+    # requisite = Requisition.objects.values()
+    # requisite = Requisition.objects.filter(is_requisited=True).order_by('jour_date')[:1]
+
+    def form_valid(self, form):
+        request = self.request
+        form.save()
+        form.instance.created_by = self.request.user
+        formsave = super().form_valid(form)
+        return formsave
+
+    # def get_queryset(self):
+    #     pk = self.kwargs['pk']
+    #     requisite = Requisition.objects.filter(is_requisited=True).order_by('jour_date')[:1]
+    #     return requisite
+    #     # return Requisition.objects.filter(is_requisited=True).order_by('jour_date')[:1]
+    #     # return Requisition.objects.all()
