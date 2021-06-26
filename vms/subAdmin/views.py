@@ -28,41 +28,41 @@ from django.utils.decorators import method_decorator
 @login_required(login_url='login')
 # @subadmin_only
 def subadminHome(request):
-    return render(request, 'vmssubadmin/subadminhome.html')
+    return render(request, 'subAdmin/subadminhome.html')
 
 
 @login_required(login_url='login')
 # @subadmin_only
 def subadminNotice(request):
-    return render(request, 'vmssubadmin/subadminnotice.html')
+    return render(request, 'subAdmin/subadminnotice.html')
 
 
 @login_required(login_url='login')
 # @subadmin_only
 def subadminEditnotice(request):
-    return render(request, 'vmssubadmin/subadmineditnotice.html')
+    return render(request, 'subAdmin/subadmineditnotice.html')
 
 
 @login_required(login_url='login')
 # @subadmin_only
 def subadminUserCost(request):
-    return render(request, 'vmssubadmin/subadminusercost.html')
+    return render(request, 'subAdmin/subadminusercost.html')
 
 
 @login_required(login_url='login')
 # @subadmin_only
 def subadminUserRequest(request):
-    return render(request, 'vmssubadmin/subadminuserrequest.html')
+    return render(request, 'subAdmin/subadminuserrequest.html')
 
 
 @login_required(login_url='login')
 # @subadmin_only
 def subadminVehicle(request):
-    return render(request, 'vmssubadmin/subadminvehicle.html')
+    return render(request, 'subAdmin/subadminvehicle.html')
 
 
 @login_required(login_url='login')
 # @subadmin_only
 def subadminDriver(request):
-    return render(request, 'vmssubadmin/subadmindriver.html')
+    return render(request, 'subAdmin/subadmindriver.html')
 

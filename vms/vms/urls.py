@@ -22,7 +22,7 @@ urlpatterns = [
     path('', include('accounts.urls')),
     path('user/', include('vmsUser.urls')),
     path('admin/', include('vmsAdmin.urls')),
-    path('subadmin/', include('vmssubadmin.urls')),
+    path('subadmin/', include('subAdmin.urls')),
     path('accountant/', include('accountant.urls')),
     path('vmsprojectadmin/', admin.site.urls),
 
