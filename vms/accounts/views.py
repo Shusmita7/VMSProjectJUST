@@ -1,6 +1,6 @@
 # from django.http import request
 from django.shortcuts import render, redirect
-from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth import login, logout, authenticate, views as auth_views
 from django.contrib.auth.models import Group
 from django.contrib import messages
 from .forms import CustomUserCreationForm, LoginForm
@@ -24,6 +24,7 @@ class SignUpView(CreateView):
     model = User
     form_class = CustomUserCreationForm
     success_url = 'login'
+    template_name = 'accounts/register.html'
 
     def form_valid(self, form):
         request = self.request
@@ -31,20 +32,20 @@ class SignUpView(CreateView):
         # group = Group.objects.get(name='admin')
         # user.groups.add(group)
         messages.success(request, "You have successfully registered...")
-
-    template_name = 'accounts/register.html'
+        return redirect('login')
 
 
 # @method_decorator(unauthenticated_user, name='dispatch')
 class LoginView(FormView):
     form_class = LoginForm
-    success_url = 'vmsUser:Home'
+    success_url = 'Home'
+    template_name = 'accounts/login.html'
 
     def form_valid(self, form):
         request = self.request
         email = form.cleaned_data.get('email')
         password = form.cleaned_data.get('password')
-        user = authenticate(request, email=email, password=password)
+        user = authenticate(request, username=email, password=password)
         if user is not None:
             login(request, user)
             messages.success(request, "You have been logged in")
@@ -52,8 +53,6 @@ class LoginView(FormView):
         else:
             messages.error(request, "Error logging in - please try again")
             return redirect('login')
-
-    template_name = 'accounts/login.html'
 
 
 def logoutUser(request):

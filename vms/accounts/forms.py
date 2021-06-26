@@ -47,6 +47,12 @@ class LoginForm(forms.Form):
     password = forms.CharField(widget=forms.PasswordInput)
 
 
+# class LoginForm(AuthenticationForm):
+#     username = forms.CharField(label='Email')
+#     # email = forms.EmailField(label='Email')
+#     # password = forms.CharField(widget=forms.PasswordInput)
+
+
 class CustomUserCreationForm(UserCreationForm):
     username = forms.CharField(required=True, label="Enter your Username", max_length=100,
                                widget=forms.TextInput(attrs={'class': 'form-control'}))

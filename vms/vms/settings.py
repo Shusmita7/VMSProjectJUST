@@ -44,6 +44,9 @@ INSTALLED_APPS = [
 
 AUTH_USER_MODEL = 'accounts.User'  # changing the default user app to custom
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+# AUTHENTICATION_BACKENDS = [
+#     'accounts.backends.EmailBackend'
+# ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
