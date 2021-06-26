@@ -2,16 +2,15 @@
 		
     table{
         border: none;
-        width: 100%;
+        max-width: 100%;
         border-collapse:collapse;
-        margin: auto;
     }
     th{
     border: none;
     background-color: cadetblue;
     color: white;
     padding: 9px;
-    font-size: 26px;
+    font-size: 11px;
     text-align: center;
     }
     td{
