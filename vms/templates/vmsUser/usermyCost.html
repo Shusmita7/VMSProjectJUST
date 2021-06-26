@@ -1,198 +1,60 @@
-<!--<!DOCTYPE html>-->
-<!--<html lang="en">-->
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <meta http-equiv="X-UA-Compatible" content="IE=edge">-->
-<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
-<!--    <title>Home</title>-->
-<!--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">-->
-<!--    <link rel="preconnect" href="https://fonts.gstatic.com">-->
-<!--    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">     -->
-<!--    {% load static %}-->
-<!--    <link rel="stylesheet" href="{% static 'vmsuser/css/usermyCost.css' %}">-->
-<!--</head>-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'vmsUser/css/usermycost.css' %}">
+</head>
 
-<!--	<body>-->
+<body>
+    <div>
+        {% include 'vmsuser/usernavbar.html' %}
+    </div>
 
-<!--		&lt;!&ndash; <div class="header" id="header">-->
-
-<!--			<nav class="navbar navbar-expand-lg navbar-light">-->
-<!--			  <a class="navbar-brand" href="#">-->
-<!--				<img src="../img/JUST LOGO.png" class="logo d-inline-block align-top" alt="">-->
-<!--				<span class="textlogo"> <span class="textlogofirst">JUST</span> <br> <span class="textlogosecond">Vehicle Management System</span></span>-->
-<!--			  </a>-->
-<!--			  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">-->
-<!--				<span class="navbar-toggler-icon"></span>-->
-<!--			  </button>-->
-<!--			-->
-<!--			  <div class="collapse navbar-collapse" id="navbarSupportedContent">-->
-<!--				<ul class="navbar-nav ml-auto">-->
-<!--				  <li class="nav-item">-->
-<!--					<a class="nav-link" href="#"><span class="navicon">Home</span></a>-->
-<!--				  </li>-->
-<!--				  <li class="nav-item">-->
-<!--					<a class="nav-link" href="#"><span class="navicon">Notice</span></a>-->
-<!--				  </li>-->
-<!--				  <li class="nav-item">-->
-<!--					<a class="nav-link" href="#"><span class="navicon">LogIn</span></a>-->
-<!--				  </li>-->
-<!--				  -->
-<!--			  </div>-->
-<!--			</nav>-->
-<!--		  </div> &ndash;&gt;-->
-
-<!--        <div>-->
-<!--            {% include 'vmsuser/usernavbar.html' %}-->
-<!--        </div>-->
-<!--		<h1> Requisition Cost </h1>-->
-<!--	-->
-<!--		<section id="breakdown">-->
-<!--			<table border="1" cellspacing="5">-->
-<!--				<thead>-->
-<!--					<th> SI </th>-->
-<!--					<th> Requisition Number </th>-->
-<!--					<th> Journey Date </th>-->
-<!--					<th> Journey Purpose </th>-->
-<!--					<th> Vehicle Type </th>-->
-<!--					<th> Vehicle ID </th>-->
-<!--					<th> Cost </th>-->
-<!--				</thead>-->
-<!--				<tr>-->
-<!--					<td> 01 </td>-->
-<!--					<td> 10101 </td>-->
-<!--					<td> 1-1-20 </td>-->
-<!--					<td> Official </td>-->
-<!--					<td> VC Doptor (Micro-Bus) </td>-->
-<!--					<td> ঢাকা  মেট্রো -গ-৩৭-৪২৬৯ </td>-->
-<!--					<td> 100 </td>-->
-<!--				</tr>-->
-<!--				<tr>-->
-<!--					<td> 02 </td>-->
-<!--					<td> 11100 </td>-->
-<!--					<td> 2-2-21 </td>-->
-<!--					<td> Personal </td>-->
-<!--					<td> Kamini(Single Deck bus) </td>-->
-<!--					<td> যশোর-স-১১-০০০১ </td>-->
-<!--					<td> 200 </td>-->
-<!--				</tr>-->
-<!--				<tr>-->
-<!--					<td> 03 </td>-->
-<!--					<td> 20100 </td>-->
-<!--					<td> 2-3-21 </td>-->
-<!--					<td> Official </td>-->
-<!--					<td> VC Doptor(Pick-Up) </td>-->
-<!--					<td> যশোর-চ-৫১-০০২৮ </td>-->
-<!--					<td> 230 </td>-->
-<!--				</tr>-->
-<!--				<tr>-->
-<!--					<td> 04 </td>-->
-<!--					<td> 30012 </td>-->
-<!--					<td> 3-1-20 </td>-->
-<!--					<td> Personal </td>-->
-<!--					<td> Voirob (AC-Minibus) </td>-->
-<!--					<td>  ঢাকা  মেট্রো -ঝ-১১-০৫৩৮ </td>-->
-<!--					<td> 150 </td>-->
-<!--					-->
-<!--				</tr>-->
-<!--				<tr>-->
-<!--					<td> 05 </td>-->
-<!--					<td> 40014 </td>-->
-<!--					<td> 1-3-21 </td>-->
-<!--					<td> Official </td>-->
-<!--					<td> Din(Micro-Bus) </td>-->
-<!--					<td>  ঢাকা  মেট্রো -চ-৫১-০০২৯ </td>-->
-<!--					<td> 500 </td>-->
-<!--					-->
-<!--				</tr>-->
-<!--				<tr>-->
-<!--					<td> 06 </td>-->
-<!--					<td> 45022 </td>-->
-<!--					<td> 1-1-21 </td>-->
-<!--					<td> Official </td>-->
-<!--					<td> Modhumoti(AC-Minibus) </td>-->
-<!--					<td> যশোর-ঝ-১১-০০১১ </td>-->
-<!--					<td> 130 </td>-->
-<!--					-->
-<!--				</tr>-->
-<!--				<tr>-->
-<!--					<td> 07 </td>-->
-<!--					<td> 50000 </td>-->
-<!--					<td> 2-2-21 </td>-->
-<!--					<td> personal </td>-->
-<!--					<td> Kopotakkho(AC-Minibus) </td>-->
-<!--					<td> যশোর-ঝ-১১-০০০৮ </td>-->
-<!--					<td> 101 </td>-->
-<!--				</tr>-->
-<!--				<tr>-->
-<!--					<td> 08 </td>-->
-<!--					<td> 51010 </td>-->
-<!--					<td> 2-3-21 </td>-->
-<!--					<td> Personal </td>-->
-<!--					<td> Voirob(AC-Minibus) </td>-->
-<!--					<td>  ঢাকা  মেট্রো -ঝ-১১-০৫৩৮ </td>-->
-<!--					<td> 115 </td>-->
-<!--				</tr>-->
-<!--			</table>-->
-<!--		</section>-->
-<!--		-->
-<!--	</body>-->
-<!--</html>-->
-
-
-
-           <div class="row">
-                <div class="col">
-                    <table class="table table-hover table-striped">
-                        <thead>
-                            <tr>
-                                <th>Sl.</th>
-                                <th>User name</th>
-                                <th>User Email</th>
-                                <th>Full Name</th>
-                                <th>Dept./Section</th>
-                                <th>Designation</th>
-                                <th>Contact Number</th>
-                                <th>Apply Date</th>
-                                <th>Requisition Purpose</th>
-                                <th>Requisition Date</th>
-                                <th>Vehicle Type</th>
-                                <th>Destination</th>
-                                <th>Starting Time</th>
-                                <th>Return Time</th>
-                                <th>Journey Details</th>
-                            </tr>
-                        </thead>
+    <table class="table table-hover table-striped mw-100">
+                            <thead>
+                                <tr>
+                                    <th>Sl.</th>
+                                    <th>Apply Date</th>
+                                    <th>Requisition Purpose</th>
+                                    <th>Requisition Date</th>
+                                    <th>Vehicle Type</th>
+                                    <th>Destination</th>
+                                    <th>Starting Time</th>
+                                    <th>Return Time</th>
+                                    <th>Cost</th>
+                                </tr>
+                            </thead>
 
 
 
 
-                        <tbody>
-                           {% for i in requisitions %}
+                            <tbody>
+                               {% for i in requisitions %}
 
-                            <tr class="table-info">
-                                <td> {{ forloop.counter }} </td>
-                                 <td> {{i.created_by.username}} </td>
-                                <td> {{i.created_by.email}} </td>
-                                <td> {{i.created_by.full_name}} </td>
-                                <td> {{i.created_by.dept_sec}} </td>
-                                <td> {{i.created_by.designation}} </td>
-                                <td> {{i.created_by.contact_no}} </td>
-                                <td> {{i.aplctn_date}} </td>
-                                <td> {{i.jour_purpose}} </td>
-                                <td> {{i.jour_date}} </td>
-                                <td> {{i.vcl_type}} </td>
-                                <td> {{i.destination}} </td>
-                                <td> {{i.departr_time}} </td>
-                                <td> {{i.rtrn_time}} </td>
-                                <td> {{i.jour_details}} </td>
+                                <tr class="table-info">
+                                    <td> {{ forloop.counter }} </td>
+
+                                    <td> {{i.aplctn_date}} </td>
+                                    <td> {{i.jour_purpose}} </td>
+                                    <td> {{i.jour_date}} </td>
+                                    <td> {{i.vcl_type}} </td>
+                                    <td> {{i.destination}} </td>
+                                    <td> {{i.departr_time}} </td>
+                                    <td> {{i.rtrn_time}} </td>
+                                    <td> {{i.jour_details}} </td>
 
 
-                            </tr>
+                                </tr>
 
-                        {% endfor %}
+                            {% endfor %}
 
-                        </tbody>
-
-                    </table>
-                </div>
-            </div>
+                            </tbody>
+        </table>
+</body>
