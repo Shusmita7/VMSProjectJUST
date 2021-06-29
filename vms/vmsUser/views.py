@@ -11,44 +11,24 @@ from .models import Requisition
 
 User = get_user_model()
 
-
-# from ..accounts.decorators import teacher_only
-
-
-# def teacher_only(view_func):
-#     def wrapper_func(request, *args, **kwargs):
-#         group = None
-#         if request.user.groups.exists():
-#             group = request.user.groups.all()[0].name
-#         if group == 'chairman':
-#             return redirect('Home')
-#         if group == 'admin':
-#             return redirect('AdminHome')
-#         if group == 'subadmin':
-#             return redirect('SubadminHome')
-#         if group == 'accountant':
-#             return redirect('acc_home')
-#         if group == 'teacher':
-#             return view_func(request, *args, **kwargs)
-#
-#     return wrapper_func
+from accounts.decorators import guser_only
 
 
 @login_required(login_url='login')
-# @teacher_only
+@guser_only
 def home(request):
     return render(request, 'vmsUser/userhome.html')
 
 
 @login_required(login_url='login')
-# @teacher_only
+@guser_only
 def notice(request):
     return render(request, 'vmsUser/usernotice.html')
 
 
 #
 @method_decorator(login_required(login_url='login'), name='dispatch')
-# @method_decorator(teacher_only, name='dispatch')
+@method_decorator(guser_only, name='dispatch')
 class RequisitionCreate(SuccessMessageMixin, CreateView):
     model = Requisition
     form_class = RequisitionForm
@@ -81,7 +61,8 @@ class RequisitionCreate(SuccessMessageMixin, CreateView):
 #     context = {'form': form}
 #     return render(request, 'vmsUser/userrequisition.html', context)
 
-
+@login_required(login_url='login')
+@guser_only
 def RequisitionSuccess(request, id=None):
     return render(request, 'vmsUser/requisitionDetail.html', {
         'requisition': get_object_or_404(Requisition, pk=id)
@@ -89,7 +70,7 @@ def RequisitionSuccess(request, id=None):
 
 
 @login_required(login_url='login')
-# @teacher_only
+@guser_only
 def myCost(request):
     return render(request, 'vmsUser/usermyCost.html', {
         'requisitions': Requisition.objects.all()

@@ -9,7 +9,7 @@ class UserAdminCreationForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ('username', 'email', 'full_name', 'dept_sec', 'designation', 'contact_no')
+        fields = ('codename', 'email', 'full_name', 'dept_sec', 'designation', 'contact_no')
 
     def clean_password2(self):
         password1 = self.cleaned_data.get("password1")
@@ -36,7 +36,7 @@ class UserAdminChangeForm(forms.ModelForm):
     class Meta:
         model = User
         fields = (
-            'username', 'email', 'full_name', 'dept_sec', 'designation', 'contact_no', 'password', 'active', 'admin')
+            'codename', 'email', 'full_name', 'dept_sec', 'designation', 'contact_no', 'password',)
 
     def clean_password(self):
         return self.initial["password"]
@@ -54,7 +54,7 @@ class LoginForm(forms.Form):
 
 
 class CustomUserCreationForm(UserCreationForm):
-    username = forms.CharField(required=True, label="Enter your Username", max_length=100,
+    codename = forms.CharField(required=True, label="Enter your Username", max_length=100,
                                widget=forms.TextInput(attrs={'class': 'form-control'}))
     email = forms.EmailField(required=True, label="Enter your Email Address", max_length=100,
                              widget=forms.TextInput(attrs={'class': 'form-control'}))
@@ -69,10 +69,58 @@ class CustomUserCreationForm(UserCreationForm):
 
     class Meta(UserCreationForm.Meta):
         model = User
-        fields = ('username', 'email', 'full_name', 'dept_sec', 'designation', 'contact_no', 'password1', 'password2')
+        fields = ('codename', 'email', 'full_name', 'dept_sec', 'designation', 'contact_no', 'password1', 'password2')
 
 
 class CustomUserChangeForm(UserChangeForm):
     class Meta:
         model = User
         fields = UserChangeForm.Meta.fields
+
+
+class RegisterForm(forms.ModelForm):
+    """
+    The default
+    """
+
+    password1 = forms.CharField(label='Password', widget=forms.PasswordInput)
+    password2 = forms.CharField(label='Confirm Password', widget=forms.PasswordInput)
+
+    class Meta:
+        model = User
+        fields = ['codename', 'email', 'full_name', 'dept_sec', 'designation', 'contact_no',]
+
+    def clean_email(self):
+        """
+        Verify email is available.
+        """
+        email = self.cleaned_data.get('email')
+        qs = User.objects.filter(email=email)
+        if qs.exists():
+            raise forms.ValidationError("email is taken")
+        return email
+
+    # def clean(self):
+    #     """
+    #     Verify both passwords match.
+    #     """
+    #     cleaned_data = super().clean()
+    #     password = cleaned_data.get("password")
+    #     password_2 = cleaned_data.get("password_2")
+    #     if password is not None and password != password_2:
+    #         self.add_error("password_2", "Your passwords must match")
+    #     return cleaned_data
+
+    def clean_password2(self):
+        password1 = self.cleaned_data.get("password1")
+        password2 = self.cleaned_data.get("password2")
+        if password1 and password2 and password1 != password2:
+            raise forms.ValidationError("Passwords don't match")
+        return password2
+
+    def save(self, commit=True):
+        user = super(RegisterForm, self).save(commit=False)
+        user.set_password(self.cleaned_data["password1"])
+        if commit:
+            user.save()
+        return user

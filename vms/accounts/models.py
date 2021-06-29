@@ -1,17 +1,16 @@
 from django.db import models
 from django.contrib.auth.models import (
-    BaseUserManager, AbstractBaseUser
+    BaseUserManager, AbstractBaseUser, PermissionsMixin
 )
 
 
 class UserManager(BaseUserManager):
-    def create_user(self, username, email, full_name, dept_sec, designation, contact_no, is_active=True, is_staff=False,
-                    is_admin=False, is_chairman=False, is_vadmin=False, is_vsubadmin=False, is_accountant=False,
-                    password=None):
-        if not username:
-            raise ValueError("Users must have a Username")
+    def create_user(self, codename, email, full_name, dept_sec, designation, contact_no, is_active=True, is_staff=False,
+                    is_admin=False, is_superuser=False, password=None):
         if not email:
             raise ValueError('Users must have an Email Address')
+        if not codename:
+            raise ValueError("Users must have a Username")
         if not password:
             raise ValueError('Users must have a Password')
         if not full_name:
@@ -26,7 +25,7 @@ class UserManager(BaseUserManager):
         user = self.model(
             email=self.normalize_email(email),
             full_name=full_name,
-            username=username,
+            codename=codename,
             dept_sec=dept_sec,
             designation=designation,
             contact_no=contact_no,
@@ -36,106 +35,47 @@ class UserManager(BaseUserManager):
         user.staff = is_staff
         user.admin = is_admin
         user.active = is_active
-        user.chairman = is_chairman
-        user.vadmin = is_vadmin
-        user.vsubadmin = is_vsubadmin
-        user.accountant = is_accountant
         user.save(using=self._db)
         return user
 
-    def create_staffuser(self, username, email, full_name, dept_sec, designation, contact_no, password):
+    def create_staffuser(self, codename, email, full_name, dept_sec, designation, contact_no, password):
         user = self.create_user(
-            username,
-            email,
-            full_name,
-            dept_sec,
-            designation,
-            contact_no,
+            email=self.normalize_email(email),
+            codename=codename,
+            full_name=full_name,
+            dept_sec=dept_sec,
+            designation=designation,
+            contact_no=contact_no,
             password=password,
         )
         user.staff = True
         user.save(using=self._db)
         return user
 
-    def create_chairman(self, username, email, full_name, dept_sec, designation, contact_no, password):
+    def create_superuser(self, codename, email, full_name, dept_sec, designation, contact_no, password):
         user = self.create_user(
-            username,
-            email,
-            full_name,
-            dept_sec,
-            designation,
-            contact_no,
-            password=password,
-        )
-        user.chairman = True
-        user.save(using=self._db)
-        return user
-
-    def create_vadmin(self, username, email, full_name, dept_sec, designation, contact_no, password):
-        user = self.create_user(
-            username,
-            email,
-            full_name,
-            dept_sec,
-            designation,
-            contact_no,
-            password=password,
-        )
-        user.vadmin = True
-        user.save(using=self._db)
-        return user
-
-    def create_vsubadmin(self, username, email, full_name, dept_sec, designation, contact_no, password):
-        user = self.create_user(
-            username,
-            email,
-            full_name,
-            dept_sec,
-            designation,
-            contact_no,
-            password=password,
-        )
-        user.vsubadmin = True
-        user.save(using=self._db)
-        return user
-
-    def create_accountant(self, username, email, full_name, dept_sec, designation, contact_no, password):
-        user = self.create_user(
-            username,
-            email,
-            full_name,
-            dept_sec,
-            designation,
-            contact_no,
-            password=password,
-        )
-        user.accountant = True
-        user.save(using=self._db)
-        return user
-
-    def create_superuser(self, username, email, full_name, dept_sec, designation, contact_no, password):
-        user = self.create_user(
-            username,
-            email,
-            full_name,
-            dept_sec,
-            designation,
-            contact_no,
+            email=self.normalize_email(email),
+            codename=codename,
+            full_name=full_name,
+            dept_sec=dept_sec,
+            designation=designation,
+            contact_no=contact_no,
             password=password,
         )
         user.staff = True
         user.admin = True
+        user.superuser = True
         user.save(using=self._db)
         return user
 
 
-class User(AbstractBaseUser):
-    username = models.CharField(verbose_name='Username', max_length=100, blank=True, null=True, unique=True)
-    email = models.EmailField(verbose_name='Email Address', max_length=100, unique=True, )
-    full_name = models.CharField(verbose_name='Full Name', max_length=150, blank=True, null=True)
-    dept_sec = models.CharField(verbose_name='Department or Section', max_length=100, blank=True, null=True)
-    designation = models.CharField(verbose_name='Designation', max_length=100, blank=True, null=True)
-    contact_no = models.CharField(verbose_name='Contact Number', max_length=11, blank=True, null=True, unique=True)
+class User(AbstractBaseUser, PermissionsMixin):
+    email = models.EmailField(verbose_name='Email Address', max_length=100, unique=True, blank=False)
+    codename = models.CharField(verbose_name='Username', max_length=100, blank=False, null=True, unique=True)
+    full_name = models.CharField(verbose_name='Full Name', max_length=150, blank=False, null=True)
+    dept_sec = models.CharField(verbose_name='Department or Section', max_length=100, blank=False, null=True)
+    designation = models.CharField(verbose_name='Designation', max_length=100, blank=False, null=True)
+    contact_no = models.CharField(verbose_name='Contact Number', max_length=11, blank=False, null=True, unique=True)
     date_joined = models.DateTimeField(verbose_name='Date Joined..', auto_now_add=True)
     last_login = models.DateTimeField(verbose_name='Last Logged in', auto_now=True)
     profile_image = models.ImageField(max_length=255, null=True, blank=True, default='defaultuser.png',
@@ -143,13 +83,10 @@ class User(AbstractBaseUser):
     active = models.BooleanField(default=True)
     staff = models.BooleanField(default=False)
     admin = models.BooleanField(default=False)
-    chairman = models.BooleanField(default=False)
-    vadmin = models.BooleanField(default=False)
-    vsubadmin = models.BooleanField(default=False)
-    accountant = models.BooleanField(default=False)
+    superuser = models.BooleanField(default=False)
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['username', 'full_name', 'dept_sec', 'designation', 'contact_no']
+    REQUIRED_FIELDS = ['codename', 'full_name', 'dept_sec', 'designation', 'contact_no']
 
     objects = UserManager()
 
@@ -159,8 +96,8 @@ class User(AbstractBaseUser):
     def get_full_name(self):
         return self.full_name
 
-    def get_username(self):
-        return self.username
+    def get_codename(self):
+        return self.codename
 
     def get_dept_sec(self):
         return self.dept_sec
@@ -203,21 +140,6 @@ class User(AbstractBaseUser):
         return self.active
 
     @property
-    def is_chairman(self):
-        """Is the user chairman?"""
-        return self.chairman
-
-    @property
-    def is_vadmin(self):
-        """Is the user vadmin?"""
-        return self.vadmin
-
-    @property
-    def is_vsubadmin(self):
-        """Is the user vsubadmin?"""
-        return self.vsubadmin
-
-    @property
-    def is_accountant(self):
-        """Is the user accountant?"""
-        return self.accountant
+    def is_superuser(self):
+        """Is the user a superuser?"""
+        return self.superuser

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/justvms.iml" filepath="$PROJECT_DIR$/.idea/justvms.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/vmsproject.iml" filepath="$PROJECT_DIR$/.idea/vmsproject.iml" />
     </modules>
   </component>
 </project>

@@ -5,39 +5,20 @@ from django.utils.decorators import method_decorator
 from django.contrib.messages.views import SuccessMessageMixin
 from django.views.generic import CreateView, FormView
 
-# from ..accounts.decorators import accountant_only
 from .models import LogBook
 from .forms import AccForm
 from vmsUser.models import Requisition
-
-
-# def accountant_only(view_func):
-#     def wrapper_func(request, *args, **kwargs):
-#         group = None
-#         if request.user.groups.exists():
-#             group = request.user.groups.all()[0].name
-#         if group == 'chairman':
-#             return redirect('Home')
-#         if group == 'teacher':
-#             return redirect('Home')
-#         if group == 'subadmin':
-#             return redirect('SubadminHome')
-#         if group == 'admin':
-#             return redirect('AdminHome')
-#         if group == 'accountant':
-#             return view_func(request, *args, **kwargs)
-#
-#     return wrapper_func
+from accounts.decorators import gaccountant_only
 
 
 @login_required(login_url='login')
-# @accountant_only
+@gaccountant_only
 def home(request):
     return HttpResponse("Hello, world. You're at the homepage of accountant.")
 
 
 @login_required(login_url='login')
-# @accountant_only
+@gaccountant_only
 def notice(request):
     return HttpResponse("This is notice page for accountant")
 
@@ -60,7 +41,8 @@ def notice(request):
 #     context = {'form': form}
 #     return render(request, 'accountant/logbook.html', context)
 
-
+@login_required(login_url='login')
+@gaccountant_only
 def InfoSuccess(request, id=None):
     return render(request, 'accountant/inputdetails.html', {
         'logbook': get_object_or_404(LogBook, pk=id)
@@ -68,7 +50,7 @@ def InfoSuccess(request, id=None):
 
 
 @method_decorator(login_required(login_url='login'), name='dispatch')
-# @method_decorator(teacher_only, name='dispatch')
+@method_decorator(gaccountant_only, name='dispatch')
 class LogBookCreate(SuccessMessageMixin, CreateView):
     model = LogBook
     form_class = AccForm

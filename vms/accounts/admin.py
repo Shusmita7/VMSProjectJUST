@@ -9,25 +9,25 @@ class UserAdmin(BaseUserAdmin):
     form = UserAdminChangeForm
     add_form = UserAdminCreationForm
 
-    list_display = ('username', 'email', 'date_joined', 'last_login', 'admin')
-    list_filter = ('admin', 'staff', 'active', 'username')
+    list_display = ('codename', 'email', 'date_joined', 'last_login', 'admin',)
+    list_filter = ('admin', 'staff', 'active', 'codename')
     readonly_fields = ('id', 'date_joined', 'last_login')
     fieldsets = (
-        (None, {'fields': ('username', 'email', 'full_name', 'dept_sec', 'designation', 'contact_no', 'password',
+        (None, {'fields': ('codename', 'email', 'full_name', 'dept_sec', 'designation', 'contact_no', 'password',
                            'profile_image',)}),
         ('Personal info', {'fields': ()}),
-        ('Permissions', {'fields': ('admin', 'staff', 'active', 'chairman', 'vadmin', 'vsubadmin', 'accountant',)}),
+        ('Permissions', {'fields': ('admin', 'staff', 'active', 'superuser', 'groups', 'user_permissions')}),
     )
 
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('username', 'email', 'full_name', 'dept_sec', 'designation', 'contact_no', 'password1',
-                       'password2', 'staff', 'active', 'chairman', 'vadmin', 'vsubadmin', 'accountant')}
+            'fields': ('codename', 'email', 'full_name', 'dept_sec', 'designation', 'contact_no', 'password1',
+                       'password2', 'staff', 'active', 'admin', 'superuser')}
          ),
     )
-    search_fields = ('username', 'email', 'full_name', 'dept_sec', 'designation', 'contact_no')
-    ordering = ('username',)
+    search_fields = ('codename', 'email', 'full_name', 'dept_sec', 'designation', 'contact_no')
+    ordering = ('codename',)
     filter_horizontal = ()
 
 
