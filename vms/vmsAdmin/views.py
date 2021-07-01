@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import CreateView, FormView
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model
@@ -67,10 +67,18 @@ def addVehicle(request):
 
 @login_required(login_url='login')
 @gadmin_only
-def viewUsers(request):
+def viewAllUsers(request):
     User = get_user_model()
     users = User.objects.values()
-    return render(request, 'vmsAdmin/viewUser.html', {'user': users})
+    return render(request, 'vmsAdmin/viewAllUser.html', {'user': users})
+
+
+@login_required(login_url='login')
+@gadmin_only
+def viewIndivUser(request, id=None):
+    User = get_user_model()
+    users = User.objects.values()
+    return render(request, 'vmsAdmin/viewIndivUser.html', {'user': get_object_or_404(users, pk=id)})
 
 
 @login_required(login_url='login')
