@@ -13,4 +13,5 @@ urlpatterns = [
     path('vehicle/add-vehicle/', views.addVehicle, name='adminAddVehicle'),
     path('driver/', views.adminDriver, name='AdminDriver'),
     path('driver/add-driver/', views.addDriver, name='adminAddDriver'),
+    path('logout/', views.logoutUser, name='logout'),
 ]
