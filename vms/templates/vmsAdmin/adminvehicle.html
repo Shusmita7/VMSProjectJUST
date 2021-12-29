@@ -44,42 +44,57 @@
                 </div>
                 <hr>
             </div>
+            <!-- Searchbar -->
+            <div class="row my-5">
+                <div class="col-md-9">
+                    <div class="form-group">
+                        <input type="text" name="search" class="form-control" placeholder="Keywords any type">
+
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <button type="submit" name="searchSubmit" class="btn btn-primary">Click to Search</button>
+                </div>
+
+            </div>
 
             <!-- table start -->
             <div class="row">
                 <div class="col">
 
-                    <table class="table text-center table-bordered border-primary my-3">
-                        <tbody>
-                            <thead class="table-dark">
-                                <th class="hideInSmall">Sl</th>
-                                <th>Vehicle name</th>
-                                <th>Vehicle id</th>
-                                <th>Vehicle type</th>
-                                <th>Cost per Km</th>
-                                <th>Cost per Hour</th>
-                                <th>Status</th>
-                                <th>Action</th>
-                            </thead>
-
-
-                        {% for i in vehicle %}
-
-                            <tr class="table-info">
-                                <td> 1 </td>
-                                <td> {{i.vcl_name}} </td>
-                                <td> {{i.vcl_number}} </td>
-                                <td> {{i.vcl_type}} </td>
-                                <td> {{i.costperkm}} </td>
-                                <td> {{i.costperhr}} </td>
-                                <td> {{i.vcl_active|yesno:"Active,Inactive,Null"}} </a> </td>
-                                <td> <a href="#">Edit</a>
-                                    |
-                                    <a href="#">Delete</a> </td>
-
+                    <table class="table table-hover table-striped">
+                        
+                        <thead class="">
+                            <tr>
+                            <th>Sl</th>
+                            <th>Vehicle name</th>
+                            <th>Vehicle id</th>
+                            <th>Vehicle type</th>
+                            <th>Cost per Km</th>
+                            <th>Cost per Hour</th>
+                            <th>Status</th>
+                            <th>Action</th>
                             </tr>
+                        </thead>
 
-                        {% endfor %}
+                        <tbody>
+                            {% for i in vehicle %}
+
+                                <tr class="table-info">
+                                    <td> 1 </td>
+                                    <td> {{i.vcl_name}} </td>
+                                    <td> {{i.vcl_number}} </td>
+                                    <td> {{i.vcl_type}} </td>
+                                    <td> {{i.costperkm}} </td>
+                                    <td> {{i.costperhr}} </td>
+                                    <td> {{i.vcl_active|yesno:"Active,Inactive,Null"}} </a> </td>
+                                    <td> <a href="#">Edit</a>
+                                        |
+                                        <a href="#">Delete</a> </td>
+
+                                </tr>
+
+                            {% endfor %}
 
 
                         </tbody>
