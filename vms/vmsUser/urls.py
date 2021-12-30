@@ -8,6 +8,6 @@ urlpatterns = [
     # path('requisition/', views.createRequisition, name='Requisition'),
     re_path('requisition/success/(?P<id>\d+)/$', views.RequisitionSuccess, name='success'),
     path('history/', views.myCost, name='MyCost'),
-    path('logout/', views.logoutUser, name='logout'),
+
     # (?P<pk>\d+)/$
 ]

@@ -8,10 +8,8 @@ class VehicleForm(forms.ModelForm):
     vcl_number = forms.CharField(required=True, label='Enter the Vehicle ID',
                                  widget=forms.TextInput(attrs={'class': 'form-control'}))
     vcl_type = forms.ChoiceField(required=True, choices=VEHICLE_TYPE, label='Enter the vehicle Category', )
-    costprkm = forms.DecimalField(required=True, label='Enter the Cost/km',
-                                  widget=forms.NumberInput(attrs={'class': 'form-control'}))
-    costprhr = forms.DecimalField(required=True, label='Enter the Cost/hr',
-                                  widget=forms.NumberInput(attrs={'class': 'form-control'}))
+    costprkm = forms.DecimalField(required=True, label='Enter the Cost/km')
+    costprhr = forms.DecimalField(required=True, label='Enter the Cost/hr')
 
     class Meta:
         model = Vehicles
@@ -35,3 +33,4 @@ class DriverForm(forms.ModelForm):
     class Meta:
         model = Drivers
         fields = ('drvr_name', 'drvr_number', 'drvr_type', 'drvr_contact_no', 'drvr_email')
+#widget=forms.NumberInput(attrs={'class': 'form-control'})

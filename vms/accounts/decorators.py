@@ -38,7 +38,11 @@ def gadmin_only(view_func):
             return redirect('Home')
         if group == 'gsubadmin':
             return redirect('SubadminHome')
+<<<<<<< Updated upstream
         if group == 'agccountant':
+=======
+        if group == 'gaccountant':
+>>>>>>> Stashed changes
             return redirect('acc_home')
         if group == 'gadmin':
             return view_func(request, *args, **kwargs)

@@ -17,8 +17,8 @@ class Vehicles(models.Model):
     vcl_number = models.CharField(verbose_name='Vehicle ID', max_length=50, blank=True, null=True, unique=True)
     vcl_type = models.CharField(verbose_name='Vehicle Category', choices=VEHICLE_TYPE, max_length=200, blank=True,
                                 null=True)
-    costperkm = models.DecimalField(verbose_name='Cost per km', decimal_places=4, max_digits=10, null=True, max_length=20, blank=True)
-    costperhr = models.DecimalField(verbose_name='Cost per hour', decimal_places=4, max_digits=10, null=True, blank=True)
+    costperkm = models.DecimalField(verbose_name='Cost per km', null=True,  blank=True, decimal_places=2, max_digits=10, )
+    costperhr = models.DecimalField(verbose_name='Cost per hour', null=True, blank=True, decimal_places=2, max_digits=10,)
     mileage = models.IntegerField(verbose_name='Mileage', null=True, blank=True)
     vcl_active = models.BooleanField(default=True)
 

@@ -3,14 +3,14 @@
 
 <head>
     <title>Vehicle</title>
-
-
+</head>
     <!-- Required meta tags -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&display=swap" rel="stylesheet">
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous"> -->
+
+    <!-- Bootstrap CSS -->
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/95f402962e.js" crossorigin="anonymous"></script>
@@ -18,13 +18,13 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'vmsAdmin/css/adminvehicle.css'%}">
 
-</head>
-
-<body>
 <div>
     {% include 'vmsAdmin/adminnavbar.html' %}
 </div>
+<body>
 
+
+<div>
     <section class="my-5">
 
 
@@ -43,57 +43,42 @@
                 </div>
                 <hr>
             </div>
-            <!-- Searchbar -->
-            <div class="row my-5">
-                <div class="col-md-9">
-                    <div class="form-group">
-                        <input type="text" name="search" class="form-control" placeholder="Keywords any type">
-
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <button type="submit" name="searchSubmit" class="btn btn-primary">Click to Search</button>
-                </div>
-
-            </div>
 
             <!-- table start -->
             <div class="row">
                 <div class="col">
 
-                    <table class="table table-hover table-striped">
-                        
-                        <thead>
-                            <tr>
-                            <th>Sl</th>
-                            <th>Vehicle name</th>
-                            <th>Vehicle id</th>
-                            <th>Vehicle type</th>
-                            <th>Cost per Km</th>
-                            <th>Cost per Hour</th>
-                            <th>Status</th>
-                            <th>Action</th>
-                            </tr>
-                        </thead>
-
+                    <table class="table text-center table-bordered border-primary my-3">
                         <tbody>
-                            {% for i in vehicle %}
+                            <thead class="table-dark">
+                                <th class="hideInSmall">Sl</th>
+                                <th>Vehicle name</th>
+                                <th>Vehicle id</th>
+                                <th>Vehicle type</th>
+                                <th>Cost per Km</th>
+                                <th>Cost per Hour</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </thead>
 
-                                <tr class="table-info">
-                                    <td> 1 </td>
-                                    <td> {{i.vcl_name}} </td>
-                                    <td> {{i.vcl_number}} </td>
-                                    <td> {{i.vcl_type}} </td>
-                                    <td> {{i.costperkm}} </td>
-                                    <td> {{i.costperhr}} </td>
-                                    <td> {{i.vcl_active|yesno:"Active,Inactive,Null"}} </a> </td>
-                                    <td> <a href="#">Edit</a>
-                                        |
-                                        <a href="#">Delete</a> </td>
 
-                                </tr>
+                        {% for i in vehicle %}
 
-                            {% endfor %}
+                            <tr class="table-info">
+                                <td> 1 </td>
+                                <td> {{i.vcl_name}} </td>
+                                <td> {{i.vcl_number}} </td>
+                                <td> {{i.vcl_type}} </td>
+                                <td> {{i.costperkm}} </td>
+                                <td> {{i.costperhr}} </td>
+                                <td> {{i.vcl_active|yesno:"Active,Inactive,Null"}} </a> </td>
+                                <td> <a href="#">Edit</a>
+                                    |
+                                    <a href="#">Delete</a> </td>
+
+                            </tr>
+
+                        {% endfor %}
 
 
                         </tbody>
@@ -107,6 +92,7 @@
 
     </section>
 
+</div>
 
 
 

@@ -3,7 +3,7 @@ from django import forms
 from .models import LogBook
 
 
-class AccForm(forms.ModelForm):
+class LogbookForm(forms.ModelForm):
     startingkm = forms.DecimalField(required=True, label='Enter starting value...')
     endingkm = forms.DecimalField(required=True, label='Enter ending value...')
     startingfuel = forms.DecimalField(required=True, label='Enter starting fuel...')

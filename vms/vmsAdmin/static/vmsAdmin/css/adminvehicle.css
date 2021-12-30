@@ -1,5 +1,24 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+ul,
+ol {
+    list-style: none;
+
+}
+
+a,
+a:hover {
+    text-decoration: none;
+}
+
+img {
+    vertical-align: middle;
+}
 body, html {
-    font-family: 'Merriweather', serif;
+    font-family: 'Roboto', serif;
     background: #fff;
     padding: 0;
     margin: 0;
@@ -7,17 +26,21 @@ body, html {
     scroll-behavior: smooth;
     width: 100%;
 }
-a{
-    text-decoration: none;
-
-}
-/* a:hover{
-    color: blueviolet;
-    text-decoration: underline;
-} */
-tr:hover{
-    background-color: rgb(201, 190, 171);
-}
 tbody{
     font-size: 14px;
 }
+hr {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    border: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+a{
+    text-decoration: none;
+    
+}
+a:hover{
+    border-radius: 3px;
+    padding: 3px;
+    color: blueviolet;
+} 
