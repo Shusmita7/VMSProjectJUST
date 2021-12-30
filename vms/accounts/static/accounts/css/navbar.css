@@ -42,6 +42,10 @@ img {
     z-index: 999;
     box-shadow: 0px 5px 4px rgba(128, 128, 128, 0.387);
 }
+.navbg{
+    position: fixed;
+    background-color: #fff;
+}
 .logo{
     width: 70px;
     height: 70px;
@@ -65,17 +69,18 @@ img {
     font-weight: 300;
 }
 .navicon{
-    width: 100%;
-    text-align: justify;
-    margin-left: 10px;
-    padding: 7px 15px;
+    height: 35px;
+    width: 90px;
+    text-align: left;
+    line-height: 30px;
+    padding-left: 20px;
+    padding-top: 3px;
     border-radius: 20px 10px 10px 20px;
     background-image: linear-gradient(to right,rgb(48, 185, 235),rgba(255, 255, 255,0.09));
     color: #000;
     font-family: 'Roboto', sans-serif;
     font-size: 18px;
     font-weight: 400;
-
 }
 
 

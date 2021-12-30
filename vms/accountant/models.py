@@ -2,6 +2,7 @@ from django.db import models
 from django.urls import reverse
 from django.conf import settings
 
+
 from vmsUser.models import Requisition
 User = settings.AUTH_USER_MODEL
 

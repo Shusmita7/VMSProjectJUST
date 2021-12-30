@@ -38,8 +38,12 @@ def gadmin_only(view_func):
             return redirect('Home')
         if group == 'gsubadmin':
             return redirect('SubadminHome')
+<<<<<<< Updated upstream
         if group == 'agccountant':
-            return redirect('AccHome')
+=======
+        if group == 'gaccountant':
+>>>>>>> Stashed changes
+            return redirect('acc_home')
         if group == 'gadmin':
             return view_func(request, *args, **kwargs)
         else:
@@ -60,7 +64,7 @@ def gchairman_only(view_func):
         if group == 'gsubadmin':
             return redirect('SubadminHome')
         if group == 'gaccountant':
-            return redirect('AccHome')
+            return redirect('acc_home')
         if group == 'gchairman':
             return view_func(request, *args, **kwargs)
         else:
@@ -81,7 +85,7 @@ def gsubadmin_only(view_func):
         if group == 'gadmin':
             return redirect('AdminHome')
         if group == 'gaccountant':
-            return redirect('AccHome')
+            return redirect('acc_home')
         if group == 'gsubadmin':
             return view_func(request, *args, **kwargs)
         else:
@@ -102,7 +106,7 @@ def guser_only(view_func):
         if group == 'gsubadmin':
             return redirect('SubadminHome')
         if group == 'gaccountant':
-            return redirect('AccHome')
+            return redirect('acc_home')
         if group == 'guser':
             return view_func(request, *args, **kwargs)
         else:
@@ -127,6 +131,6 @@ def gaccountant_only(view_func):
         if group == 'gaccountant':
             return view_func(request, *args, **kwargs)
         else:
-            return redirect('AccHome')
+            return redirect('acc_home')
 
     return wrapper_func

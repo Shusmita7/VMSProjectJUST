@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib import messages
-from django.contrib.auth import get_user_model, logout
+from django.contrib.auth import get_user_model
 
 from .forms import RequisitionForm
 from .models import Requisition
@@ -75,8 +75,3 @@ def myCost(request):
     return render(request, 'vmsUser/usermyCost.html', {
         'requisitions': Requisition.objects.all()
     })
-@login_required(login_url='login')
-def logoutUser(request):
-    logout(request)
-    messages.success(request, "You have been logged out")
-    return redirect('homePage')
