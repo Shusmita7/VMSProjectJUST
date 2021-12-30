@@ -13,14 +13,14 @@ from accounts.decorators import gaccountant_only
 
 @login_required(login_url='login')
 @gaccountant_only
-def home(request):
-    return HttpResponse("Hello, world. You're at the homepage of accountant.")
+def accHome(request):
+    return render(request, 'accountant/acchome.html')
 
 
 @login_required(login_url='login')
 @gaccountant_only
-def notice(request):
-    return HttpResponse("This is notice page for accountant")
+def accNotice(request):
+    return render(request, 'accountant/accnotice.html')
 
 
 # @login_required(login_url='login')

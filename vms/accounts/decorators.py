@@ -39,7 +39,7 @@ def gadmin_only(view_func):
         if group == 'gsubadmin':
             return redirect('SubadminHome')
         if group == 'agccountant':
-            return redirect('acc_home')
+            return redirect('AccHome')
         if group == 'gadmin':
             return view_func(request, *args, **kwargs)
         else:
@@ -60,7 +60,7 @@ def gchairman_only(view_func):
         if group == 'gsubadmin':
             return redirect('SubadminHome')
         if group == 'gaccountant':
-            return redirect('acc_home')
+            return redirect('AccHome')
         if group == 'gchairman':
             return view_func(request, *args, **kwargs)
         else:
@@ -81,7 +81,7 @@ def gsubadmin_only(view_func):
         if group == 'gadmin':
             return redirect('AdminHome')
         if group == 'gaccountant':
-            return redirect('acc_home')
+            return redirect('AccHome')
         if group == 'gsubadmin':
             return view_func(request, *args, **kwargs)
         else:
@@ -102,7 +102,7 @@ def guser_only(view_func):
         if group == 'gsubadmin':
             return redirect('SubadminHome')
         if group == 'gaccountant':
-            return redirect('acc_home')
+            return redirect('AccHome')
         if group == 'guser':
             return view_func(request, *args, **kwargs)
         else:
@@ -127,6 +127,6 @@ def gaccountant_only(view_func):
         if group == 'gaccountant':
             return view_func(request, *args, **kwargs)
         else:
-            return redirect('acc_home')
+            return redirect('AccHome')
 
     return wrapper_func

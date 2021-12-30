@@ -1,0 +1,32 @@
+{% load static %}
+<link rel="stylesheet" href=" {% static 'accountant/css/accnavbar.css' %}">
+
+
+<div class="header">
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <a class="navbar-brand" href="#">
+        <img src="{% static 'images/justlogo.png' %}" style="width: 3vw; min-width: 3px;"/>
+        <span class="textlogo">  <span class="textlogofirst">JUST</span> <br> <span class="textlogosecond">Vehicle Management System</span></span>
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'AccHome' %}"><span class="navicon">Home</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'AccNotice' %}"><span class="navicon">Notice</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'AdminUserCost' %}"><span class="navicon">UserCost</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'logout' %}"><span class="navicon">Log out</span></a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
